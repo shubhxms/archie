@@ -28,7 +28,7 @@
       let html = "";
       data.forEach((item) => {
         let timestamp = new Date(item.timestamp).toLocaleString();
-        html += `<div class="data-item"><h4>${timestamp}</h4>${item.html}`;
+        html += `<div class="data-item"><h4>${timestamp} - <a href="https://streams.place/shubhxms/drops/${item.id}">permalink</a></h4>${item.html}`;
         if (item.media && item.media.length > 0) {
           item.media.forEach((mediaItem) => {
             if (mediaItem.type === "photo") {
