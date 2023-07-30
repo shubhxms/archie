@@ -1,0 +1,9 @@
+<div id="data-container"></div>
+<script>
+  fetch("/fetchdata") // This assumes you have a content file with the URL "/fetchdata" containing the shortcode.
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("data-container").innerHTML = data;
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+</script>

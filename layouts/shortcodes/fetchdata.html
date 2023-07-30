@@ -1,12 +1,4 @@
-{{/* {{ $url := "https://streams.place/shubhxms/json" }} {{ $response := getJSON
-$url }} {{ range $item := $response }} {{ $timestamp := index $item "timestamp"
-}} {{ $timestampInt := $timestamp | int }} {{ $html := index $item "html" }}
-<div class="data-item">
-  <h2>{{ dateFormat "2006-01-02 15:04:05" $timestampInt }}</h2>
-  {{ $html | safeHTML }}
-</div>
-{{ end }} */}}
-{{ $url := "https://streams.place/shubhxms/json" }}
+{{/*  {{ $url := "https://streams.place/shubhxms/json" }}
 <div id="data-container"></div>
 <script>
   fetch("{{ $url }}")
@@ -18,6 +10,52 @@ $url }} {{ range $item := $response }} {{ $timestamp := index $item "timestamp"
         html += `<div class="data-item"><h4>${timestamp}</h4>${item.html}</div>`;
       });
       document.getElementById("data-container").innerHTML = html;
+      if(item.media){
+        item.media.forEach((item) => {
+          console.log(item["urlToFile"])
+        })
+      }
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+</script>  */}}
+
+{{ $url := "https://streams.place/shubhxms/json" }}
+<div id="data-container"></div>
+<script>
+  fetch("{{ $url }}")
+    .then((response) => response.json())
+    .then((data) => {
+      let html = "";
+      data.forEach((item) => {
+        let timestamp = new Date(item.timestamp).toLocaleString();
+        html += `<div class="data-item"><h4>${timestamp}</h4>${item.html}`;
+        if (item.media && item.media.length > 0) {
+          item.media.forEach((mediaItem) => {
+            if (mediaItem.type === "photo") {
+              html += `<img src="${mediaItem.urlToFile}" alt="Image">`;
+            }
+          });
+        }
+        html += `</div>`;
+      });
+      document.getElementById("data-container").innerHTML = html;
     })
     .catch((error) => console.error("Error fetching data:", error));
 </script>
+
+
+{{/*  {{ $url := "https://streams.place/shubhxms/json" }}
+{{ $response := getJSON $url }}
+{{ range $item := $response }}
+  {{ $timestamp := index $item "timestamp" }}
+  {{ $timestampFormatted := time.Unix (div $timestamp 1000) 0 | dateFormat "2006-01-02 15:04:05" }}
+  {{ $html := index $item "html" }}
+  {{ $mediaItems := where $item.media "type" "photo" }}
+  <div class="data-item">
+    <h4>{{ $timestampFormatted }}</h4>
+    {{ $html | safeHTML }}
+    {{ range $media := $mediaItems }}
+      {{< figure src="$media.urlToFile" title="$item.text" >}}
+    {{ end }}
+  </div>
+{{ end }}  */}}
