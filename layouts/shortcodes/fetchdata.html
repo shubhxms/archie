@@ -1,0 +1,23 @@
+{{/* {{ $url := "https://streams.place/shubhxms/json" }} {{ $response := getJSON
+$url }} {{ range $item := $response }} {{ $timestamp := index $item "timestamp"
+}} {{ $timestampInt := $timestamp | int }} {{ $html := index $item "html" }}
+<div class="data-item">
+  <h2>{{ dateFormat "2006-01-02 15:04:05" $timestampInt }}</h2>
+  {{ $html | safeHTML }}
+</div>
+{{ end }} */}}
+{{ $url := "https://streams.place/shubhxms/json" }}
+<div id="data-container"></div>
+<script>
+  fetch("{{ $url }}")
+    .then((response) => response.json())
+    .then((data) => {
+      let html = "";
+      data.forEach((item) => {
+        let timestamp = new Date(item.timestamp).toLocaleString();
+        html += `<div class="data-item"><h4>${timestamp}</h4>${item.html}</div>`;
+      });
+      document.getElementById("data-container").innerHTML = html;
+    })
+    .catch((error) => console.error("Error fetching data:", error));
+</script>
