@@ -1,0 +1,6 @@
+{{ $birthYear := 2003 }}
+
+{{ $currentYear := now.Year }}
+{{ $age := sub $currentYear $birthYear }}
+
+<span>{{- $age -}}</span>
