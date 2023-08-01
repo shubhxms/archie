@@ -92,6 +92,10 @@ figure img {
   figure {
     padding: 0 40px;
   }
+  .stream {
+    padding-left: 15%;
+    max-width: 70%;
+  }
 }
 @media screen and (max-width: 600px) {
   html {

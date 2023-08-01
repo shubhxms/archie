@@ -20,7 +20,7 @@
 </script>  */}}
 
 {{ $url := "https://streams.place/shubhxms/json" }}
-<div id="data-container" style="max-width: 70%; padding-left: 15%;"><div></div></div>
+<div id="data-container" class="stream"><div></div></div>
 <script>
   fetch("{{ $url }}")
     .then((response) => response.json())
