@@ -26,7 +26,7 @@
     .then((response) => response.json())
     .then((data) => {
       let html = "";
-      data = data.slice(0, 36);
+      data = data.slice(0, 491);
       data.forEach((item) => {
         let timestamp = new Date(item.timestamp).toLocaleString();
         html += `<div class="data-item"><h4>${timestamp} - <a href="https://streams.place/shubhxms/drops/${item.id}">permalink</a></h4>${item.html}`;
