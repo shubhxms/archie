@@ -353,3 +353,54 @@ table td{
   padding: 6px 13px;
   border: 1px solid #dfe2e5;
 }
+
+
+/* sidenotes */
+.sidenote {
+  font-size: 80%;
+  position: relative;
+}
+/* Wide viewport */
+@media (min-width: 1400px) {
+  .sidenote {
+      float: left;
+      clear: left;
+      margin-left: -23vw;
+      text-align: right;
+
+      top: -0.8rem;
+      width: 20vw;
+      margin-top: 1rem;
+  }
+}
+body {
+  counter-reset: sidenote-counter;
+}
+.sidenote-number {
+  counter-increment: sidenote-counter;
+}
+/* Counter before the sidenote in the margin. */
+.sidenote::before {
+  content: counter(sidenote-counter)".";
+  position: relative;
+  vertical-align: baseline;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+/* Counter in the main body. */
+.sidenote-number::after {
+  content: counter(sidenote-counter);
+  vertical-align: super;
+  font-size: 0.7em;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 1400px) {
+  .sidenote{
+    display: none;
+  }
+  .sidenote-number {
+    display: none;
+  }
+}
