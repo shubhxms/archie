@@ -1,7 +1,11 @@
 body {
   color: white;
   background-color: #202124;
+  /* text-shadow: none; */
+  font-weight: 500;
 }
+
+
 
 ::-moz-selection {
   background: blue;
@@ -10,13 +14,14 @@ body {
 }
 
 ::selection {
-  background: #50fa7b;
+  /* background: #50fa7b; */
+  background: #FFFFCF;
   color: #000000;
   text-shadow: none;
 }
 
 hr {
-  border-top: 3px dotted blue;
+  border-top: 3px dotted #828282;
 }
 code {
   background-color: lightblue;

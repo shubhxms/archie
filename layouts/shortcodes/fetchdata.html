@@ -1,32 +1,10 @@
-{{/*  {{ $url := "https://streams.place/shubhxms/json" }}
-<div id="data-container"></div>
-<script>
-  fetch("{{ $url }}")
-    .then((response) => response.json())
-    .then((data) => {
-      let html = "";
-      data.forEach((item) => {
-        let timestamp = new Date(item.timestamp).toLocaleString();
-        html += `<div class="data-item"><h4>${timestamp}</h4>${item.html}</div>`;
-      });
-      document.getElementById("data-container").innerHTML = html;
-      if(item.media){
-        item.media.forEach((item) => {
-          console.log(item["urlToFile"])
-        })
-      }
-    })
-    .catch((error) => console.error("Error fetching data:", error));
-</script>  */}}
-
 {{ $url := "https://streams.place/shubhxms/json" }}
 <div id="data-container" class="stream"><div></div></div>
 <script>
   fetch("{{ $url }}")
-    .then((response) => response.json())
+    .then((response) => response.json(JSON.stringify()))
     .then((data) => {
       let html = "";
-      data = data.slice(0, 491);
       data.forEach((item) => {
         let timestamp = new Date(item.timestamp).toLocaleString();
         html += `<div class="data-item"><h4>${timestamp} - <a href="https://streams.place/shubhxms/drops/${item.id}">permalink</a></h4>${item.html}`;
@@ -43,20 +21,3 @@
     })
     .catch((error) => console.error("Error fetching data:", error));
 </script>
-
-
-{{/*  {{ $url := "https://streams.place/shubhxms/json" }}
-{{ $response := getJSON $url }}
-{{ range $item := $response }}
-  {{ $timestamp := index $item "timestamp" }}
-  {{ $timestampFormatted := time.Unix (div $timestamp 1000) 0 | dateFormat "2006-01-02 15:04:05" }}
-  {{ $html := index $item "html" }}
-  {{ $mediaItems := where $item.media "type" "photo" }}
-  <div class="data-item">
-    <h4>{{ $timestampFormatted }}</h4>
-    {{ $html | safeHTML }}
-    {{ range $media := $mediaItems }}
-      {{< figure src="$media.urlToFile" title="$item.text" >}}
-    {{ end }}
-  </div>
-{{ end }}  */}}
