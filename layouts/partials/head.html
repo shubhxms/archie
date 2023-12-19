@@ -1,6 +1,11 @@
 <header>
 	<div class="main">
-		<a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+		<a id="mhl" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+		<div class="lines">
+			<div class="line"></div>
+			<div class="line"></div>
+			<div class="line"></div>
+		</div>
 	</div>
 	<nav>
 		{{ range .Site.Menus.main }}
