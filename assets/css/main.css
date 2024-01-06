@@ -205,6 +205,11 @@ header {
   margin: 1em 0;
   line-height: 2.5em;
   font-weight: bolder;
+  /* font-family: 'Cormorant Garamond' !important;  */
+}
+
+header a {
+  font-family: "Fira Mono", monospace; 
 }
 
 header .main {
