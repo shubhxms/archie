@@ -80,7 +80,12 @@ a:hover {
   background-color: var(--darkMaincolor);
   color: black;
 }
-
+a:hover::selection {
+  color: #1acd62
+  /* color: #fff; */
+  /* #0756f4 */
+  /* #bcf407 */
+}
 .site-description a {
   color: #ddd;
 }
