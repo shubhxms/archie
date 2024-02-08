@@ -495,5 +495,6 @@ body {
 
   #home-img:hover {
     transform: rotate(360deg);
+    /* transform:rotate3d(250deg); */
   }
 }
