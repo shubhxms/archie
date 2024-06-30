@@ -246,7 +246,7 @@ footer {
   display: flex;
   align-items: center;
   border-top: 0.4rem dotted var(--bordercl);
-  padding: 2rem 0rem;
+  padding: 1rem 0rem;
   margin-top: 2rem;
 }
 .soc {
@@ -262,8 +262,6 @@ footer {
 .footer-info {
   padding: var(--footer-padding);
   font-size: small;
-  /* display: flex; */
-  justify-content: space-between;
 }
 
 /* Common */

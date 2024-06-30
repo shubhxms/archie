@@ -11,10 +11,9 @@
   */}}
   <div class="footer-info">
     {{ with .GitInfo }}
-    <div>latest commit #{{ .Hash }}</div>
-    <div>
-      sometime in {{ .CommitDate.Format "2006/01" }} by {{ .AuthorName }}
-    </div>
+    <span>latest commit {{ .AbbreviatedHash }}, {{ .Subject }}</span>
+    <br/>
+    <span>sometime in {{ .CommitDate.Format "2006/01" }} </span>
     {{ end }}
   </div>
 </footer>
