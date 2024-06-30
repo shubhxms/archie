@@ -15,8 +15,8 @@ body {
 
 ::selection {
   /* background: #50fa7b; */
-  /* background: #FFFFCF; */
-  background: #faffc0;
+  background: #ffff7e;
+  /* background: #faffc0; */
   /* color: #f5f5f5; */
   color: #020202;
   text-shadow: none;
@@ -81,6 +81,10 @@ a {
 a:hover {
   background-color: var(--darkMaincolor);
   color: black;
+}
+a:hover::selection{
+  background-color: #ffffff;
+  color: #232323;
 }
 
 footer{
