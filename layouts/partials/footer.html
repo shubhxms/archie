@@ -1,20 +1,26 @@
 <footer>
-  <div style="display:flex">
-    {{- range $index, $key := .Site.Params.Social -}}
-    <a class="soc" href="{{ $key.url }}" rel="me" title="{{ $key.name }}"><i data-feather="{{ $key.icon }}"></i></a>
+  {{/*
+  <div style="display: flex">
+    */}} {{/* {{- range $index, $key := .Site.Params.Social -}}
+    <a class="soc" href="{{ $key.url }}" rel="me" title="{{ $key.name }}"
+      ><i data-feather="{{ $key.icon }}"></i
+    ></a>
     <a class="border"></a>
-    {{- end -}}
+    {{- end -}} */}} {{/*
   </div>
+  */}}
   <div class="footer-info">
-    built by a house plant with god complex
+    {{ with .GitInfo }}
+    <div>latest commit #{{ .Hash }}</div>
+    <div>
+      sometime in {{ .CommitDate.Format "2006/01" }} by {{ .AuthorName }}
+    </div>
+    {{ end }}
   </div>
 </footer>
-{{ if not .Site.IsServer }}
-{{ template "_internal/google_analytics_async.html" . }}
-{{ end }}
 
-{{- if (isset .Site.Params "social") -}}
+{{/* {{- if (isset .Site.Params "social") -}}
 <script>
-  feather.replace()
+  feather.replace();
 </script>
-{{- end -}}
+{{- end -}} */}}

@@ -2,8 +2,9 @@
 <div id="data-container" class="stream"><div></div></div>
 <script>
   fetch("{{ $url }}")
-    .then((response) => response.json(JSON.stringify()))
+    .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       let html = "";
       data.forEach((item) => {
         let timestamp = new Date(item.timestamp).toLocaleString();

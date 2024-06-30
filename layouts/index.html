@@ -3,10 +3,7 @@
   {{ partial "header.html" . }}
   <body>
     <div class="content">
-      {{ partial "head.html" . }} {{ .Content }}
-
-      
-      {{ partial "footer.html" . }}
+      {{ partial "head.html" . }} {{ .Content }} {{- partial "footer.html" . -}}
     </div>
   </body>
 </html>

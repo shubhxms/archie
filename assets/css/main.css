@@ -1,21 +1,35 @@
 /* Markdown */
 :root {
-  --maincolor: blue;
-  --bordercl: #828282;
-  --callouctcolor: dodgerblue;
-  --hovercolor: blue;
-  --darkMaincolor: #50fa7b;
+  --maincolor: dodgerblue;
+  --bordercl: #000000;
+  --callouctcolor: blue;
+  --hovercolor: dodgerblue;
+  --darkMaincolor: #fff;
 }
 
 html {
   color: #232333;
   font-family: "Fira Mono", monospace;
+  /* this is controlling the font hrhk */
   font-size: 13px;
   line-height: 1.3em;
   font-weight: 600;
+  /* letter-spacing: 0.02px; */
+  /* padding-top: 5%; */
 }
 
-.lines{
+.lines {
+  display: block;
+  box-sizing: border-box;
+  z-index: -100;
+}
+
+body {
+  display: block;
+  margin: 8px;
+  /* background-color: #F4F3F2; */
+}
+.lines {
   display: block;
   box-sizing: border-box;
   z-index: -100;
@@ -26,10 +40,7 @@ html {
   height: 2px;
   margin-bottom: 2px;
   box-shadow: 0 0 0.05em rgba(0%, 0%, 100%, 0.2),
-0 0 0.1em rgba(0%, 100%, 0%, 0.2),
-0 0 0.2em rgba(100%, 10%, 10%, 0.2);
-  /* transform: translateY(30px); */
-  /* transform: translate(0, -5%); */
+    0 0 0.1em rgba(0%, 100%, 0%, 0.2), 0 0 0.2em rgba(100%, 10%, 10%, 0.2);
 }
 
 .line:nth-child(1) {
@@ -44,45 +55,12 @@ html {
   background-color: #009cdf;
 }
 
-body {
-  /* diameter of the circle */
-  --d: 0.9px; 
-  
-  background : radial-gradient(
-    circle at 
-       var(--d) 
-       var(--d), 
-       
-       var(--bordercl) calc(var(--d) - 1px), 
-    #00000000 var(--d)
-  ) 
-  0 0 / 20px 20px;
-}
-
-
-#mhl{
-  z-index: 100;
-}
-
-body {
-  display: block;
-  margin: 8px;
-  /* background-color: #f4f6ff ; */
-
-}
-* {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
 * ::selection {
-  background: #FFFFCF;
-  /* color: #fff; */
+  background: #ffffcf;
 }
 
-p {
-  font-family: "Fira Mono", monospace;
-  line-height: 1.3;
-  /* font-weight: bold; */
+a:hover::selection {
+  background-color: var(--hovercolor);
 }
 
 hr {
@@ -98,6 +76,10 @@ blockquote {
   padding-left: 1em;
 }
 
+p {
+  line-height: 1.5em !important;
+}
+
 a {
   border-bottom: 3px solid var(--maincolor);
   color: inherit;
@@ -106,13 +88,7 @@ a {
 a:hover {
   background-color: var(--hovercolor);
   color: #fff;
-  padding: 2px 0;
-}
-a:hover::selection {
-  color: var(--maincolor)
-  /* color: #fff; */
-  /* #0756f4 */
-  /* #bcf407 */
+  padding: 1px 0;
 }
 
 ul {
@@ -121,6 +97,7 @@ ul {
 }
 ul li {
   text-indent: -2ch;
+  margin-top: 2px;
 }
 ul > li::before {
   content: "* ";
@@ -199,9 +176,9 @@ pre code {
   margin-bottom: 4em;
   margin-left: auto;
   margin-right: auto;
-  max-width: 800px;
+  max-width: 600px;
   padding: 0 1ch;
-  word-wrap: break-word;
+  /* word-wrap: break-word; */
 }
 
 /* Header */
@@ -212,11 +189,7 @@ header {
   margin: 1em 0;
   line-height: 2.5em;
   font-weight: bolder;
-  /* font-family: 'Cormorant Garamond' !important;  */
-}
-
-header a {
-  font-family: "Fira Mono", monospace; 
+  /* position: absolute; */
 }
 
 header .main {
@@ -228,6 +201,7 @@ h2,
 h3 {
   font-size: 1.2rem;
   margin-top: 2em;
+  /* font-family: "Tiny5"; */
 }
 
 h4,
@@ -288,6 +262,8 @@ footer {
 .footer-info {
   padding: var(--footer-padding);
   font-size: small;
+  /* display: flex; */
+  justify-content: space-between;
 }
 
 /* Common */
@@ -494,7 +470,7 @@ body {
   }
 
   #home-img:hover {
-    transform: rotate(360deg);
-    /* transform:rotate3d(250deg); */
+    /* transform: rotate(360deg); */
+    transform: rotate3d(250deg);
   }
 }
