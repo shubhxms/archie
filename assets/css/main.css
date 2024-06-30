@@ -56,7 +56,8 @@ body {
 }
 
 * ::selection {
-  background: #ffffcf;
+  /* background: #ffffcf; */
+  background:#ffffcf;
 }
 
 a:hover::selection {
@@ -101,7 +102,7 @@ ul li {
 }
 ul > li::before {
   content: "* ";
-  /* font-weight: bold; */
+  font-weight: bold;
 }
 
 /* Images */

@@ -1,6 +1,4 @@
 {{ define "main" }}
-{{/*  <script src="https://hypothes.is/embed.js" async></script>  */}}
-
 <main>
 	<article>
 		<div class="title">
@@ -13,11 +11,9 @@
 			<strong>tl;dr:</strong>
 			{{ .Params.tldr }}
 		</div>{{ end }}
-
 		<section class="body">
 			{{ .Content }}
 		</section>
-
 		<div class="post-tags">
 			{{ if ne .Type "page" }}
 			{{ if gt .Params.tags 0 }}
@@ -31,25 +27,68 @@
 			{{ end }}
 			{{ end }}
 		</div>
-
-		<script src="https://giscus.app/client.js"
-        data-repo="shubhxms/shubhxms.github.io"
-        data-repo-id="R_kgDOKBNhuA"
-        data-category="Comments"
-        data-category-id="DIC_kwDOKBNhuM4CgfKH"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="transparent_dark"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-</script>
+		<div id="giscus-container"></div>
 	</article>
-
 </main>
-{{/*  {{- partial "footer.html" . -}}  */}}
+
+{{ $script := `
+function loadGiscus() {
+  const theme = localStorage.getItem("theme-storage") === "light" ? "light" : "transparent_dark";
+  const script = document.createElement('script');
+  script.src = "https://giscus.app/client.js";
+  script.setAttribute('data-repo', "shubhxms/shubhxms.github.io");
+  script.setAttribute('data-repo-id', "R_kgDOKBNhuA");
+  script.setAttribute('data-category', "Comments");
+  script.setAttribute('data-category-id', "DIC_kwDOKBNhuM4CgfKH");
+  script.setAttribute('data-mapping', "url");
+  script.setAttribute('data-strict', "0");
+  script.setAttribute('data-reactions-enabled', "1");
+  script.setAttribute('data-emit-metadata', "0");
+  script.setAttribute('data-input-position', "top");
+  script.setAttribute('data-theme', theme);
+  script.setAttribute('data-lang', "en");
+  script.setAttribute('data-loading', "lazy");
+  script.setAttribute('crossorigin', "anonymous");
+  script.async = true;
+
+  const container = document.getElementById('giscus-container');
+  container.innerHTML = ''; // Clear existing content
+  container.appendChild(script);
+}
+
+function updateGiscusTheme() {
+  const iframe = document.querySelector('iframe.giscus-frame');
+  if (!iframe) return;
+
+  const theme = localStorage.getItem("theme-storage") === "light" ? "light" : "transparent_dark";
+  iframe.contentWindow.postMessage(
+    { giscus: { setConfig: { theme } } },
+    'https://giscus.app'
+  );
+}
+
+// Load Giscus initially
+document.addEventListener('DOMContentLoaded', loadGiscus);
+
+// Setup a MutationObserver to watch for theme changes
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+      updateGiscusTheme();
+    }
+  });
+});
+
+// Start observing the document with the configured parameters
+observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+// Also update theme when localStorage changes
+window.addEventListener('storage', (event) => {
+  if (event.key === 'theme-storage') {
+    updateGiscusTheme();
+  }
+});
+`}}
+
+<script>{{ $script | safeJS }}</script>
 {{ end }}
