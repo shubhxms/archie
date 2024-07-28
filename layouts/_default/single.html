@@ -2,7 +2,7 @@
 <main>
 	<article>
 		<div class="title">
-			<h1 class="title"><a href>{{ .Title }} </a></h1>
+			<h1 class="title serif-font-block"><a href>{{ .Title }} </a></h1>
 			{{ if isset .Params "date" }}
 			<div class="meta">Posted on {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>{{ end }}
 		</div>

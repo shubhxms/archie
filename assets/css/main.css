@@ -7,13 +7,18 @@
   --darkMaincolor: #fff;
 }
 
+@font-face {
+  font-family: ChaparrallPro;
+  src: url('/fonts/ChaparralPro-Bold.woff2') format('woff2'),
+}
+
 html {
   color: #232333;
   font-family: "Fira Mono", monospace;
   /* this is controlling the font hrhk */
   font-size: 13px;
   line-height: 1.3em;
-  font-weight: 600;
+  font-weight: 550;
   /* letter-spacing: 0.02px; */
   /* padding-top: 5%; */
 }
@@ -99,6 +104,7 @@ ul {
 ul li {
   text-indent: -2ch;
   margin-top: 2px;
+  font-family: "Fira Mono", monospace;
 }
 ul > li::before {
   content: "* ";
@@ -198,6 +204,11 @@ header .main {
   font-size: 1.5rem;
 }
 
+.main{
+  font-family: "ChaparrallPro", "Fira Mono", monospace;
+  font-size: 28px !important;
+}
+
 h1,
 h2,
 h3 {
@@ -279,6 +290,8 @@ time {
 article .title {
   margin-bottom: 1em;
 }
+
+
 
 /* Callout */
 .callout {
