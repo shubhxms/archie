@@ -18,7 +18,7 @@ html {
   /* this is controlling the font hrhk */
   font-size: 13px;
   line-height: 1.3em;
-  font-weight: 550;
+  font-weight: 600;
   /* letter-spacing: 0.02px; */
   /* padding-top: 5%; */
 }
@@ -474,6 +474,9 @@ body {
   }
   .sidenote-number {
     display: none;
+  }
+  .main{
+    font-size: 19px !important;
   }
 }
 
