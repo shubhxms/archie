@@ -30,7 +30,9 @@
   "google-fonts" . }} {{- else -}} {{ $fontstyle := resources.Get
   "css/fonts.css" | fingerprint }}
   <link href="{{ $fontstyle.Permalink }}" rel="stylesheet" />
-  {{ end }} {{ $style := resources.Get "css/main.css" | fingerprint }}
+  {{ end }} {{ $style := resources.Get "css/main.css" | resources.Minify |
+  resources.PostProcess }}
+
   <link
     rel="stylesheet"
     type="text/css"
@@ -40,10 +42,10 @@
 
   {{- if or (eq .Site.Params.mode "auto") (eq .Site.Params.mode "dark") (eq
   .Site.Params.mode "toggle") -}} {{ $darkstyle := resources.Get "css/dark.css"
-  | fingerprint }} <link id="darkModeStyle" rel="stylesheet" type="text/css"
-  href="{{ $darkstyle.Permalink }}" {{ if eq .Site.Params.mode "auto"
-  }}media="(prefers-color-scheme: dark)"{{ end }} {{ if eq .Site.Params.mode
-  "toggle" }}disabled{{ end }} /> {{ end }}
+  | resources.Minify | resources.PostProcess }} <link id="darkModeStyle"
+  rel="stylesheet" type="text/css" href="{{ $darkstyle.Permalink }}" {{ if eq
+  .Site.Params.mode "auto" }}media="(prefers-color-scheme: dark)"{{ end }} {{ if
+  eq .Site.Params.mode "toggle" }}disabled{{ end }} /> {{ end }}
 
   <!-- Mathjax support -->
   {{ with .Site.Params.mathjax }}
@@ -107,5 +109,4 @@
   {{- else if (hasPrefix . "<script")}} {{ .| safeHTML }} {{- else }}
   <script src="{{ $.Site.BaseURL }}{{ . }}"></script>
   {{- end }} {{- end }}
-
 </head>
