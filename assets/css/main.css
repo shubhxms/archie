@@ -5,6 +5,8 @@
   --callouctcolor: blue;
   --hovercolor: dodgerblue;
   --darkMaincolor: #fff;
+  --headerColor: #003cff;
+  --darkHeaderColor: #ffed92;
 }
 
 /* @font-face {
@@ -181,6 +183,7 @@ header {
   margin: 1em 0;
   line-height: 2.5em;
   font-weight: bolder;
+  /* color: var(--headerColor); */
   /* position: absolute; */
 }
 
@@ -194,6 +197,7 @@ h2,
 h3 {
   font-size: 1.2rem;
   margin-top: 2em;
+  color: #003cff;
   /* font-family: "Tiny5"; */
 }
 
@@ -205,27 +209,27 @@ h6 {
 }
 
 h1::before {
-  color: var(--maincolor);
+  color: var(--headerColor);
   content: "# ";
 }
 h2::before {
-  color: var(--maincolor);
+  color: var(--headerColor);
   content: "## ";
 }
 h3::before {
-  color: var(--maincolor);
+  color: var(--headerColor);
   content: "### ";
 }
 h4::before {
-  color: var(--maincolor);
+  color: var(--headerColor);
   content: "#### ";
 }
 h5::before {
-  color: var(--maincolor);
+  color: var(--headerColor);
   content: "##### ";
 }
 h6::before {
-  color: var(--maincolor);
+  color: var(--headerColor);
   content: "###### ";
 }
 

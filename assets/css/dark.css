@@ -47,30 +47,30 @@ h3,
 h4,
 h5,
 h6 {
-  color: #ffffff;
+  color: var(--darkHeaderColor);
 }
 h1::before {
-  color: var(--darkMaincolor);
+  color: var(--darkHeaderColor);
   content: "# ";
 }
 h2::before {
-  color: var(--darkMaincolor);
+  color: var(--darkHeaderColor);
   content: "## ";
 }
 h3::before {
-  color: var(--darkMaincolor);
+  color: var(--darkHeaderColor);
   content: "### ";
 }
 h4::before {
-  color: var(--darkMaincolor);
+  color: var(--darkHeaderColor);
   content: "#### ";
 }
 h5::before {
-  color: var(--darkMaincolor);
+  color: var(--darkHeaderColor);
   content: "##### ";
 }
 h6::before {
-  color: var(--darkMaincolor);
+  color: var(--darkHeaderColor);
   content: "###### ";
 }
 
