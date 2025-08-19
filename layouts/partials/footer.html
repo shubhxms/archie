@@ -1,25 +1,8 @@
 <footer>
-  {{/*
-  <div style="display: flex">
-    */}} {{/* {{- range $index, $key := .Site.Params.Social -}}
-    <a class="soc" href="{{ $key.url }}" rel="me" title="{{ $key.name }}"
-      ><i data-feather="{{ $key.icon }}"></i
-    ></a>
-    <a class="border"></a>
-    {{- end -}} */}} {{/*
-  </div>
-  */}}
-  <div class="footer-info">
+  <div class="footer-info" style="display: flex; justify-content: space-between; width: 100%;">
     {{ with .GitInfo }}
     <span>latest commit - {{ .AbbreviatedHash }}, {{ .Subject }}</span>
-    <br/>
     <span>sometime in {{ .CommitDate.Format "2006/01" }} </span>
     {{ end }}
   </div>
 </footer>
-
-{{/* {{- if (isset .Site.Params "social") -}}
-<script>
-  feather.replace();
-</script>
-{{- end -}} */}}

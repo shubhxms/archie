@@ -4,13 +4,24 @@
 <h1>Entries tagged - "{{ .Data.Term }}"</h1>
 {{ end }}
 
-<ul class="posts">
+<table class="posts">
+	<thead>
+		<tr>
+			<th>Date</th>
+			<th>Title</th>
+			<th>Status</th>
+		</tr>
+	</thead>
+	<tbody>
 	{{- range .Data.Pages -}}
 		{{- if (not (in (.Site.Params.excludedTypes | default (slice "page")) .Type)) -}}
-		<li class="post">
-			<a href="{{ .RelPermalink }}">{{.Title}}</a> <span class="meta">{{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</span>
-		</li>
+		<tr>
+			<td>{{ dateFormat "Jan 2, 2006" .Date }}</td>
+			<td><a href="{{ .RelPermalink }}">{{.Title}}</a></td>
+			<td>{{ if .Draft }}<span class="status-draft">DRAFT</span>{{ end }}</td>
+		</tr>
 		{{- end -}}
 	{{- end -}}
-</ul>
+	</tbody>
+</table>
 {{ end }}
