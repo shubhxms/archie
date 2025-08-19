@@ -1,16 +1,16 @@
 :root {
-  --maincolor: #003cff;
+  --maincolor: #0053a3;
   --bordercl: #000000;
   --callouctcolor: #0052ff;
   --hovercolor: #003cff;
   --darkMaincolor: #fff;
-  --headerColor: #003cff;
+  --headerColor: #0053a3;
   --darkHeaderColor: #ffed92;
   --selection-bg: #ffeb3b;
 }
 
 html {
-  color: #232333;
+  color: #1c1c1c;
   font-family: 'IBM Plex Mono', monospace;
   font-size: 13px;
   line-height: 1.4em;
@@ -19,7 +19,7 @@ html {
 
 body {
   margin: 8px;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
   text-shadow: 0 0 1px rgba(0,0,0,0.1);
 }
 
@@ -113,7 +113,7 @@ pre {
 }
 
 .header {
-  background: #ffffff;
+  background: #f5f5f5;
   padding: 1.5rem 1rem;
   position: sticky;
   top: 0;
