@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ .Site.Language.Lang }}">
   {{- partial "header.html" . -}}
   <body>
-    <div class="content">
-      {{- block "main" . }}{{- end }}
-      {{- partial "footer.html" . -}}
+    <div class="page-wrapper">
+      <main class="main-content">
+        <div class="content">
+          {{- block "main" . }}{{- end }}
+          {{- partial "footer.html" . -}}
+        </div>
+      </main>
+      <aside class="sidebar">
+        <nav class="sidebar-nav">
+          <div class="site-title">
+            <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+          </div>
+          {{ range .Site.Menus.main }}
+          <a href="{{ .URL }}">{{ .Name }}</a>
+          {{ end }}
+          <div class="sidebar-meta">
+            {{ if eq .Site.Params.mode "toggle" -}}
+            <span id="dark-mode-toggle" onclick="toggleTheme()" title="Toggle theme">◐</span>
+            {{ end }}
+          </div>
+          {{ with .GitInfo }}
+          <div class="git-info">
+            <a href="https://github.com/shubhxms/shubhxms.github.io/commit/{{ .Hash }}" title="{{ .Subject }}">
+              {{ .AbbreviatedHash }}
+            </a>
+            <span class="git-date">
+              {{ $now := now }}
+              {{ $diff := $now.Sub .AuthorDate }}
+              {{ $days := div $diff.Hours 24 }}
+              {{ if lt $days 1 }}today
+              {{ else if lt $days 2 }}yesterday
+              {{ else if lt $days 7 }}this week
+              {{ else if lt $days 14 }}last week
+              {{ else if lt $days 30 }}this month
+              {{ else if lt $days 60 }}last month
+              {{ else }}{{ .AuthorDate.Format "Jan 2006" }}
+              {{ end }}
+            </span>
+          </div>
+          {{ end }}
+        </nav>
+      </aside>
     </div>
   </body>
 </html>
