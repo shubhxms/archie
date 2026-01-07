@@ -28,8 +28,7 @@ body {
 /* Patrick Collison layout: content left, nav fixed right */
 .page-wrapper {
   display: block;
-  width: 55%;
-  /* max-width: 45rem; */
+  max-width: 75ch;
   margin: 0;
   padding: 2rem 2rem 2rem 6rem;
   min-height: 100vh;
@@ -212,10 +211,9 @@ hr {
   margin: 1.2em 0;
 }
 
-/* Images - can overflow into the margin space */
+/* Images - responsive and contained */
 img {
-  max-width: 130%;
-  padding-left: 100%;
+  max-width: 100%;
   height: auto;
 }
 
@@ -224,7 +222,7 @@ figure {
 }
 
 figure img {
-  max-width: 130%;
+  max-width: 100%;
 }
 
 figcaption {
@@ -388,8 +386,9 @@ svg {
   }
   
   .page-wrapper {
+    width: 100%;
     padding: 16px;
-    max-width: 100%;
+    max-width: none;
     min-height: auto;
   }
   
