@@ -1,0 +1,18 @@
+{{ if ne .Params.showTicker false }}
+{{/* Build ticker items once */}}
+{{ $tickerItems := slice }}
+{{ if and .IsPage .GitInfo }}
+  {{ $tickerItems = $tickerItems | append (printf `<span class="ticker-item">This page was last edited on %s</span><span class="ticker-sep">*</span>` (.GitInfo.AuthorDate.Format "Jan 2, 2006")) }}
+{{ end }}
+{{ $tickerItems = $tickerItems | append `<span class="ticker-item">Recently edited:</span>` }}
+{{ range first 10 (sort .Site.RegularPages ".Lastmod" "desc") }}
+  {{ $tickerItems = $tickerItems | append (printf `<span class="ticker-item"><a href="%s">%s</a></span><span class="ticker-sep">*</span>` .RelPermalink .Title) }}
+{{ end }}
+{{ $tickerHTML := delimit $tickerItems "" }}
+<div class="ticker">
+  <div class="ticker-content">
+    {{ $tickerHTML | safeHTML }}
+    {{ $tickerHTML | safeHTML }}
+  </div>
+</div>
+{{ end }}
