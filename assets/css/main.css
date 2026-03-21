@@ -1,5 +1,5 @@
 :root {
-  --link: #2563eb;
+  --link: #3b6cc9;
   --text: #202122;
   --text-secondary: #54595d;
   --bg: #fff;
@@ -8,10 +8,12 @@
 }
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 15px;
-  line-height: 1.2;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.35;
   color: var(--text);
+  letter-spacing: -0.01em;
 }
 
 body {
@@ -25,12 +27,15 @@ body {
   background: var(--selection);
 }
 
-/* Patrick Collison layout: content left, nav fixed right */
+/* Patrick Collison layout: content slightly centered, nav fixed right */
 .page-wrapper {
   display: block;
-  max-width: 80ch;
-  margin: 0;
-  padding: 2rem 2rem 2rem 6rem;
+  max-width: 90ch;
+  margin: 0 auto;
+  margin-left: 40px;
+  padding: 1.5rem 2rem;
+  padding-right: 180px;
+  padding-top: 40px; /* Space for fixed ticker */
   min-height: 100vh;
   box-sizing: border-box;
 }
@@ -43,30 +48,33 @@ body {
   max-width: 100%;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  padding-bottom: 60px;
 }
 
 /* Sidebar fixed to right */
 .sidebar {
   position: fixed;
   top: 32px;
-  right: 50px;
+  right: 30px;
   bottom: 32px;
   text-align: right;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-weight: 500;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-size: 12px;
 }
 
 .sidebar-nav {
-  line-height: 1.4;
-  font-size: 14px;
+  line-height: 1.3;
+  font-size: 12px;
 }
 
 .sidebar-nav .site-title {
   margin-bottom: 3px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .sidebar-nav .site-title a {
@@ -104,7 +112,7 @@ body {
 /* Git info - inline after nav */
 .git-info {
   margin-top: 12px;
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-secondary);
   line-height: 1.4;
 }
@@ -112,7 +120,6 @@ body {
 .git-info a {
   color: var(--text-secondary);
   text-decoration: none;
-  font-family: 'SF Mono', Menlo, monospace;
 }
 
 .git-info a:hover {
@@ -126,56 +133,58 @@ body {
   opacity: 0.8;
 }
 
-/* Typography */
+/* Typography - DM Serif Display with tight tracking */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'DM Serif Display', Georgia, serif;
-  font-weight: 800;
+  font-weight: 400;
   color: var(--text);
-  margin: 1.1em 0 0.25em 0;
-  line-height: 1.2;
-  border-bottom: none;
+  margin: 0.8em 0 0.15em 0;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
 }
 
-h1 { font-size: 1.7rem; }
-h2 { font-size: 1.35rem; border-bottom: 1px solid var(--border); padding-bottom: 0.2em; }
-h3 { font-size: 1.15rem; }
+h1 { font-size: 2.8rem; letter-spacing: -0.03em; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.1rem; }
 h4, h5, h6 { font-size: 1rem; }
 
 .title h1 {
-  font-size: 1.85rem;
+  font-size: 3rem;
   margin-top: 0;
-  margin-bottom: 0.35em;
-  border-bottom: none;
+  margin-bottom: 0.15em;
+  letter-spacing: -0.035em;
 }
 
-/* Abstract / TLDR */
+/* Abstract / TLDR - minimal, no decoration */
 .tldr {
-  font-size: 0.92rem;
-  line-height: 1.55;
-  margin-bottom: 1.1em;
-  padding: 0.6em 0.8em;
-  background: #f8f9fa;
-  border: 1px solid #eaecf0;
-  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.6em;
+  font-style: italic;
+  color: var(--text-secondary);
 }
 
 .tldr strong {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 600;
-  font-size: 0.75rem;
+  font-family: 'Space Mono', monospace;
+  font-weight: 400;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
   display: block;
   margin-bottom: 0.25em;
   color: var(--text-secondary);
+  font-style: normal;
 }
 
 /* Links */
 a {
   color: var(--link);
   text-decoration: underline;
-  text-decoration-thickness: 1px;
   text-underline-offset: 2px;
+}
+
+a:visited {
+  color: #6b5b95;
 }
 
 a:hover {
@@ -183,14 +192,15 @@ a:hover {
   text-decoration: none;
 }
 
-/* Content */
+/* Content - dense paragraph */
 p {
-  margin: 0.7em 0;
+  margin: 0.4em 0;
+  line-height: 1.45;
 }
 
 ul, ol {
-  padding-left: 1.6em;
-  margin: 0.2em 0;
+  padding-left: 1.3em;
+  margin: 0.1em 0;
 }
 
 li {
@@ -198,17 +208,16 @@ li {
 }
 
 blockquote {
-  margin: 0.8em 0 0.8em 1em;
-  padding-left: 0.8em;
-  border-left: 3px solid #c8ccd1;
-  color: var(--text);
+  margin: 0.6em 0;
+  padding-left: 0;
   font-style: italic;
+  color: var(--text);
 }
 
 hr {
   border: none;
   border-top: 1px solid var(--border);
-  margin: 1.2em 0;
+  margin: 1em 0;
 }
 
 /* Images - responsive and contained */
@@ -232,22 +241,21 @@ figcaption {
   font-style: italic;
 }
 
-/* Code */
+/* Code - minimal, no decoration */
 code {
-  font-family: 'SF Mono', Menlo, Consolas, monospace;
-  font-size: 0.9em;
-  background: #f8f9fa;
-  padding: 1px 3px;
-  border: 1px solid #eaecf0;
+  font-family: 'Space Mono', 'SF Mono', monospace;
+  font-size: 0.85em;
+  background: transparent;
+  padding: 0;
 }
 
 pre {
-  background: #f8f9fa;
-  border: 1px solid #eaecf0;
-  padding: 10px;
+  font-family: 'Space Mono', monospace;
+  background: #fafafa;
+  padding: 0.6em 0.8em;
   overflow-x: auto;
-  line-height: 1.45;
-  font-size: 0.88em;
+  font-size: 0.8em;
+  line-height: 1.4;
 }
 
 pre code {
@@ -256,20 +264,21 @@ pre code {
   padding: 0;
 }
 
-/* Meta */
-.meta, time {
+/* Meta - monospace for scientific feel */
+.meta, time, .git-info {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
   color: var(--text-secondary);
-  font-size: 0.88rem;
 }
 
 /* Footer */
 footer {
-  margin-top: 2em;
+  margin-top: 1.5em;
   padding-top: 0.6em;
   border-top: 1px solid var(--border);
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
 }
 
 /* Tables */
@@ -447,11 +456,11 @@ svg {
   }
   
   .title h1 {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
   }
-  
-  h1 { font-size: 1.4rem; }
-  h2 { font-size: 1.2rem; }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.4rem; }
   
   .media-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -477,6 +486,154 @@ svg {
   .media-grid {
     grid-template-columns: 1fr;
     gap: 0.8rem;
+  }
+}
+
+/* Heading index sticky at bottom */
+.heading-index {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg);
+  padding: 8px 16px;
+  font-size: 11px;
+  font-family: 'Space Mono', monospace;
+  z-index: 100;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  border-top: 1px solid var(--border);
+}
+
+.heading-index::-webkit-scrollbar {
+  display: none;
+}
+
+.heading-index-inner {
+  display: inline-flex;
+  gap: 2px;
+}
+
+.heading-index a {
+  display: inline-block;
+  padding: 2px 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background 0.15s ease;
+}
+
+.heading-index a.h3 {
+  padding-left: 14px;
+  font-size: 10px;
+}
+
+.heading-index a.active {
+  background: var(--selection);
+  color: var(--text);
+}
+
+.heading-index a:hover {
+  background: var(--selection);
+  color: var(--text);
+}
+
+/* Anchor link buttons for headings */
+.heading-anchor {
+  opacity: 0;
+  margin-left: 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: opacity 0.15s;
+  display: inline-flex;
+  align-items: center;
+}
+
+.heading-anchor svg {
+  width: 14px;
+  height: 14px;
+}
+
+h2:hover .heading-anchor,
+h3:hover .heading-anchor {
+  opacity: 1;
+}
+
+/* Ticker - fixed at top with hide/show on scroll */
+.ticker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background: var(--text);
+  padding: 8px 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--bg);
+  z-index: 101;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.ticker.hidden {
+  transform: translateY(-100%);
+}
+
+.ticker-content {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 30s linear infinite;
+  will-change: transform;
+}
+
+.ticker:hover .ticker-content {
+  animation-duration: 90s;
+}
+
+.ticker-item {
+  flex-shrink: 0;
+  padding: 0 12px;
+}
+
+.ticker-item a {
+  color: var(--bg);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ticker-item a:hover {
+  background: rgba(255,255,255,0.2);
+  text-decoration: none;
+}
+
+.ticker-item code {
+  background: none;
+  color: var(--bg);
+  font-size: inherit;
+}
+
+.ticker-sep {
+  color: rgba(255,255,255,0.4);
+  padding: 0 4px;
+}
+
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Hide heading index on mobile */
+@media (max-width: 800px) {
+  .heading-index {
+    display: none;
+  }
+
+  .page-wrapper {
+    padding-right: 16px;
   }
 }
 
