@@ -2,6 +2,7 @@
 <html lang="{{ .Site.Language.Lang }}">
   {{- partial "header.html" . -}}
   <body>
+    {{- partial "ticker.html" . -}}
     <div class="page-wrapper">
       <main class="main-content">
         <div class="content">
@@ -45,5 +46,8 @@
         </nav>
       </aside>
     </div>
+    <nav class="heading-index" id="heading-index"></nav>
+    <script src="{{ "js/heading-index.js" | relURL }}"></script>
+    <script src="{{ "js/ticker-scroll.js" | relURL }}"></script>
   </body>
 </html>
