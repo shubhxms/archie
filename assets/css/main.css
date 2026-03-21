@@ -34,7 +34,7 @@ body {
   display: block;
   max-width: 90ch;
   margin: 0 auto;
-  margin-left: 40px;
+  margin-left: 7%;  /* Slight left offset for ~5-10% centering feel */
   padding: 1.5rem 2rem;
   padding-right: 180px;
   padding-top: 40px; /* Space for fixed ticker */
@@ -403,10 +403,19 @@ svg {
 
   .page-wrapper {
     width: 100%;
+    margin: 0;
+    margin-left: 0;
     padding: 16px;
     padding-top: 16px;
     max-width: none;
     min-height: auto;
+    box-sizing: border-box;
+  }
+
+  .main-content,
+  .content {
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .sidebar {
@@ -504,11 +513,11 @@ svg {
   }
 }
 
-/* Heading index sticky at bottom */
+/* Heading index fixed at bottom */
 .heading-index {
-  position: sticky;
+  position: fixed;
   bottom: 0;
-  left: 0;
+  left: 7%;
   right: 0;
   background: var(--bg);
   padding: 8px 16px;
@@ -603,10 +612,6 @@ h3:hover .heading-anchor {
   width: max-content;
   animation: ticker-scroll 30s linear infinite;
   will-change: transform;
-}
-
-.ticker:hover .ticker-content {
-  animation-duration: 90s;
 }
 
 .ticker-item {

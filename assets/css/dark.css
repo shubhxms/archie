@@ -112,20 +112,24 @@ figcaption {
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.08);
 }
 
-/* Ticker dark mode */
+/* Ticker dark mode - inverted (light bar on dark page) */
 .ticker {
-  background: var(--bg);
-  color: var(--text);
+  background: #e8e8e8;
+  color: #1a1a1a;
 }
 
 .ticker-item a {
-  color: var(--link);
+  color: #1a1a1a;
 }
 
 .ticker-item a:hover {
-  background: var(--selection);
+  background: rgba(0,0,0,0.1);
+}
+
+.ticker-item code {
+  color: #333;
 }
 
 .ticker-sep {
-  color: var(--text-secondary);
+  color: #666;
 }

@@ -8,6 +8,7 @@
         <div class="content">
           {{- block "main" . }}{{- end }}
           {{- partial "footer.html" . -}}
+          <nav class="heading-index" id="heading-index"></nav>
         </div>
       </main>
       <aside class="sidebar">
@@ -46,7 +47,6 @@
         </nav>
       </aside>
     </div>
-    <nav class="heading-index" id="heading-index"></nav>
     <script src="{{ "js/heading-index.js" | relURL }}"></script>
     <script src="{{ "js/ticker-scroll.js" | relURL }}"></script>
   </body>
