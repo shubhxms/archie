@@ -56,7 +56,7 @@ body {
 /* Sidebar fixed to right */
 .sidebar {
   position: fixed;
-  top: 32px;
+  top: 40px;
   right: 30px;
   bottom: 32px;
   text-align: right;
@@ -527,7 +527,6 @@ svg {
   overflow-x: auto;
   white-space: nowrap;
   scrollbar-width: none;
-  border-top: 1px solid var(--border);
 }
 
 .heading-index::-webkit-scrollbar {
