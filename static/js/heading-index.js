@@ -36,18 +36,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
   indexContainer.appendChild(inner);
 
-  // Track which heading is currently most visible
-  let currentActive = null;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        currentActive = entry.target.id;
-        indexContainer.querySelectorAll('a').forEach(a => {
-          a.classList.toggle('active', a.getAttribute('href') === '#' + currentActive);
-        });
-      }
+  // Helper to set active link
+  function setActive(hash) {
+    indexContainer.querySelectorAll('a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === hash);
     });
+  }
+
+  // Handle clicks on index links - immediately highlight
+  indexContainer.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') {
+      setActive(e.target.getAttribute('href'));
+    }
+  });
+
+  // Track which heading is currently most visible via scroll
+  let scrollTimeout;
+  const observer = new IntersectionObserver((entries) => {
+    // Debounce to avoid fighting with click highlight
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActive('#' + entry.target.id);
+        }
+      });
+    }, 100);
   }, { rootMargin: '-10% 0px -80% 0px' });
 
   headings.forEach(h => observer.observe(h));
