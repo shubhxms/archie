@@ -360,7 +360,7 @@ table.posts td:first-child {
   line-height: 1.35;
   color: var(--text-secondary);
   font-family: 'Space Grotesk', sans-serif;
-  user-select: text;
+  user-select: none;
 }
 
 /* SVG */
