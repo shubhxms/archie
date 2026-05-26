@@ -328,9 +328,8 @@ table.posts td:first-child {
 }
 
 /* Sidenotes */
-.sidenote-wrapper {
-  position: relative;
-  display: inline;
+.sidenote-outer {
+  user-select: none;
 }
 
 .sidenote-toggle {
@@ -351,14 +350,17 @@ table.posts td:first-child {
 }
 
 .sidenote {
-  position: absolute;
-  right: -38%;
-  width: 34%;
-  top: 0;
+  display: block;
+  float: right;
+  clear: right;
+  width: 36%;
+  margin-right: -40%;
+  margin-bottom: 0;
   font-size: 0.8rem;
   line-height: 1.35;
   color: var(--text-secondary);
   font-family: 'Space Grotesk', sans-serif;
+  user-select: text;
 }
 
 /* SVG */
@@ -539,8 +541,9 @@ svg {
   }
 
   .sidenote {
-    position: static;
+    float: none;
     width: 100%;
+    margin-right: 0;
     display: none;
     padding: 0.5em 0 0.5em 0.8em;
     border-left: 2px solid var(--border);
