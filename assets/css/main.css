@@ -165,7 +165,6 @@ h4, h5, h6 { font-size: 1rem; }
   font-style: italic;
   color: var(--text-secondary);
   padding-bottom: 0.6em;
-  border-bottom: 1px solid var(--border);
 }
 
 /* Links */
@@ -359,7 +358,6 @@ table.posts td:first-child {
   color: var(--text-secondary);
   vertical-align: baseline;
   font-family: 'Space Grotesk', sans-serif;
-  user-select: none;
 }
 
 /* SVG */
