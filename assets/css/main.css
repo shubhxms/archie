@@ -4,14 +4,14 @@
   --text-secondary: #54595d;
   --bg: #fff;
   --border: #a2a9b1;
-  --selection: #fff3a8;
+  --selection: #fffde7;
 }
 
 html {
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
-  font-size: 13px;
-  line-height: 1.35;
+  font-size: 14px;
+  line-height: 1.4;
   color: var(--text);
   letter-spacing: -0.01em;
   overflow-x: hidden;
@@ -290,15 +290,33 @@ table.posts {
   font-size: 0.9rem;
 }
 
-table.posts th, table.posts td {
-  border: 1px solid var(--border);
-  padding: 5px 8px;
+table.posts th {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+  padding: 0 8px 6px 0;
+  border-bottom: 1px solid var(--border);
   text-align: left;
 }
 
-table.posts th {
-  background: #f8f9fa;
-  font-weight: 600;
+table.posts td {
+  padding: 6px 8px 6px 0;
+  border-bottom: 1px solid transparent;
+  vertical-align: baseline;
+}
+
+table.posts tr:hover td {
+  border-bottom-color: var(--border);
+}
+
+table.posts td:first-child {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
 }
 
 .status-draft {
@@ -313,10 +331,32 @@ table.posts th {
 
 /* Callout */
 .callout {
-  background: #f8f9fa;
-  padding: 0.7em;
-  border: 1px solid #eaecf0;
-  border-left: 3px solid var(--link);
+  background: none;
+  padding: 0.7em 0 0.7em 0.8em;
+  border: none;
+  border-left: 2px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Sidenotes */
+.sidenote-number {
+  position: relative;
+  vertical-align: super;
+}
+
+.sidenote {
+  display: block;
+  float: right;
+  clear: right;
+  width: 36%;
+  margin-right: -40%;
+  margin-bottom: 0;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: var(--text-secondary);
+  vertical-align: baseline;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 /* SVG */
@@ -520,13 +560,19 @@ svg {
   left: 7%;
   right: 0;
   background: var(--bg);
-  padding: 8px 16px;
+  padding: 6px 16px;
   font-size: 11px;
   font-family: 'Space Mono', monospace;
   z-index: 100;
   overflow-x: auto;
   white-space: nowrap;
   scrollbar-width: none;
+  border-top: 1px solid transparent;
+  transition: border-top-color 0.2s ease;
+}
+
+.heading-index:hover {
+  border-top-color: var(--border);
 }
 
 .heading-index::-webkit-scrollbar {

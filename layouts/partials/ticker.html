@@ -1,4 +1,4 @@
-{{ if ne .Params.showTicker false }}
+{{ if and (ne .Site.Params.showTicker false) (ne .Params.showTicker false) }}
 {{/* Build ticker items once */}}
 {{ $tickerItems := slice }}
 {{ if and .IsPage .GitInfo }}
