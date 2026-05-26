@@ -1,5 +1,6 @@
-<span class="sidenote-number">
-    <small class="sidenote">
-        {{ .Inner }}
-    </small>
-  </span>
+<label class="sidenote-toggle" for="sn-{{ .Ordinal }}">
+</label>
+<input class="sidenote-state" id="sn-{{ .Ordinal }}" type="checkbox">
+<span class="sidenote">
+    {{ .Inner }}
+</span>

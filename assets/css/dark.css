@@ -94,6 +94,10 @@ table.posts tr:hover td {
   color: var(--text-secondary);
 }
 
+.sidenote-toggle {
+  color: var(--link);
+}
+
 .meta, time {
   color: var(--text-secondary);
 }

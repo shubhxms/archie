@@ -330,9 +330,21 @@ table.posts td:first-child {
 }
 
 /* Sidenotes */
-.sidenote-number {
-  position: relative;
+.sidenote-toggle {
+  cursor: pointer;
   vertical-align: super;
+  font-size: 0.75rem;
+  line-height: 1;
+  color: var(--link);
+  user-select: none;
+}
+
+.sidenote-toggle::after {
+  content: "¶";
+}
+
+.sidenote-state {
+  display: none;
 }
 
 .sidenote {
@@ -347,6 +359,7 @@ table.posts td:first-child {
   color: var(--text-secondary);
   vertical-align: baseline;
   font-family: 'Space Grotesk', sans-serif;
+  user-select: none;
 }
 
 /* SVG */
@@ -524,6 +537,20 @@ svg {
 
   .heading-index {
     display: none;
+  }
+
+  .sidenote {
+    float: none;
+    width: 100%;
+    margin-right: 0;
+    display: none;
+    padding: 0.5em 0 0.5em 0.8em;
+    border-left: 2px solid var(--border);
+    user-select: text;
+  }
+
+  .sidenote-state:checked + .sidenote {
+    display: block;
   }
 }
 
