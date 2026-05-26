@@ -164,20 +164,8 @@ h4, h5, h6 { font-size: 1rem; }
   margin-bottom: 0.6em;
   font-style: italic;
   color: var(--text-secondary);
-  padding: 0.6em 0.8em;
-  border: 1px solid var(--border);
-}
-
-.tldr strong {
-  font-family: 'Space Mono', monospace;
-  font-weight: 400;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  display: block;
-  margin-bottom: 0.25em;
-  color: var(--text-secondary);
-  font-style: normal;
+  padding-bottom: 0.6em;
+  border-bottom: 1px solid var(--border);
 }
 
 /* Links */

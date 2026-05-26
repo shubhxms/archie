@@ -6,7 +6,6 @@
 		</div>
 		{{ if isset .Params "tldr" }}
 		<div class="tldr">
-			<strong>Abstract</strong>
 			{{ .Params.tldr | markdownify }}
 		</div>{{ end }}
 		<section class="body">
