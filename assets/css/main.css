@@ -161,10 +161,9 @@ h4, h5, h6 { font-size: 1rem; }
 .tldr {
   font-size: 0.9rem;
   line-height: 1.4;
-  margin-bottom: 0.6em;
+  margin: 0.5em 0;
   font-style: italic;
   color: var(--text-secondary);
-  padding-bottom: 0.6em;
 }
 
 /* Links */
