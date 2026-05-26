@@ -329,6 +329,11 @@ table.posts td:first-child {
 }
 
 /* Sidenotes */
+.sidenote-wrapper {
+  position: relative;
+  display: inline;
+}
+
 .sidenote-toggle {
   cursor: pointer;
   vertical-align: super;
@@ -347,16 +352,13 @@ table.posts td:first-child {
 }
 
 .sidenote {
-  display: block;
-  float: right;
-  clear: right;
-  width: 36%;
-  margin-right: -40%;
-  margin-bottom: 0;
+  position: absolute;
+  right: -38%;
+  width: 34%;
+  top: 0;
   font-size: 0.8rem;
   line-height: 1.35;
   color: var(--text-secondary);
-  vertical-align: baseline;
   font-family: 'Space Grotesk', sans-serif;
 }
 
@@ -538,9 +540,8 @@ svg {
   }
 
   .sidenote {
-    float: none;
+    position: static;
     width: 100%;
-    margin-right: 0;
     display: none;
     padding: 0.5em 0 0.5em 0.8em;
     border-left: 2px solid var(--border);
