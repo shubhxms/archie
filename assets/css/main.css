@@ -4,7 +4,7 @@
   --text-secondary: #54595d;
   --bg: #fff;
   --border: #a2a9b1;
-  --selection: #fffde7;
+  --selection: #fff3a8;
 }
 
 html {
@@ -164,6 +164,8 @@ h4, h5, h6 { font-size: 1rem; }
   margin-bottom: 0.6em;
   font-style: italic;
   color: var(--text-secondary);
+  padding: 0.6em 0.8em;
+  border: 1px solid var(--border);
 }
 
 .tldr strong {
