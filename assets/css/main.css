@@ -571,7 +571,7 @@ svg {
 .feed-panel {
   position: fixed;
   top: 50%;
-  right: 200px;
+  right: 250px;
   width: 220px;
   transform: translateY(-50%);
   z-index: 50;
