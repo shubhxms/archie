@@ -629,10 +629,13 @@ svg {
 .feed-panel {
   position: fixed;
   top: 50%;
-  right: 200px;
-  width: 260px;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
   z-index: 50;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 1em;
   animation: feed-panel-in 0.2s ease;
 }
 

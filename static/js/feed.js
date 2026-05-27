@@ -33,7 +33,7 @@
       pStars.innerHTML = '<span class="feed-detail-rating-num">No rating</span>';
     }
 
-    pRewatch.hidden = card.dataset.rewatch !== "true";
+    pRewatch.style.display = card.dataset.rewatch === "true" ? "inline-block" : "none";
 
     var review = card.dataset.review;
     var textarea = document.createElement("textarea");
