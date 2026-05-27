@@ -36,7 +36,9 @@
     pRewatch.hidden = card.dataset.rewatch !== "true";
 
     var review = card.dataset.review;
-    pReview.textContent = review;
+    var textarea = document.createElement("textarea");
+    textarea.innerHTML = review;
+    pReview.textContent = textarea.value;
     pReview.style.display = review ? "block" : "none";
 
     var d = new Date(card.dataset.watched + "T00:00:00");

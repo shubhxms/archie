@@ -629,8 +629,8 @@ svg {
 .feed-panel {
   position: fixed;
   top: 50%;
-  right: 210px;
-  width: 220px;
+  right: 200px;
+  width: 260px;
   transform: translateY(-50%);
   z-index: 50;
   animation: feed-panel-in 0.2s ease;
@@ -655,45 +655,45 @@ svg {
 }
 
 .feed-panel-content h3 {
-  font-size: 1rem;
-  margin: 0 0 0.2em 0;
+  font-size: 1.15rem;
+  margin: 0 0 0.15em 0;
 }
 
 .feed-panel-content h3 small {
   font-weight: 400;
   color: var(--text-secondary);
   font-family: 'Space Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 
 .feed-panel-stars {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: var(--text);
   margin-bottom: 0.2em;
 }
 
 .feed-detail-rating-num {
   font-family: 'Space Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
   margin-left: 0.3em;
 }
 
 .feed-panel-rewatch {
   font-family: 'Space Mono', monospace;
-  font-size: 0.6rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.3px;
   color: var(--text-secondary);
   border: 1px solid var(--border);
-  padding: 1px 4px;
+  padding: 1px 5px;
   border-radius: 2px;
   display: inline-block;
 }
 
 .feed-panel-review {
-  font-size: 0.85rem;
-  line-height: 1.4;
+  font-size: 0.9rem;
+  line-height: 1.45;
   margin: 0;
   white-space: pre-line;
   font-style: italic;
@@ -702,13 +702,13 @@ svg {
 .feed-panel-date {
   display: block;
   font-family: 'Space Mono', monospace;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   color: var(--text-secondary);
   margin-top: 0.2em;
 }
 
 .feed-panel-link {
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-family: 'Space Mono', monospace;
 }
 
