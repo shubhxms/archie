@@ -549,7 +549,7 @@ svg {
 
 .feed-film-title {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
@@ -557,13 +557,13 @@ svg {
 }
 
 .feed-film-year {
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
   font-family: 'Space Mono', monospace;
 }
 
 .feed-rating {
-  font-size: 0.35rem;
+  font-size: 0.4rem;
   color: var(--border);
   letter-spacing: 1px;
 }
