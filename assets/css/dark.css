@@ -73,8 +73,25 @@ hr {
   border-top-color: var(--border);
 }
 
-footer {
+.divider-main::before {
   border-top-color: var(--border);
+}
+
+.divider-main::after {
+  color: var(--border);
+  background: var(--bg);
+}
+
+.divider-minor::before {
+  border-top-color: var(--border);
+}
+
+.divider-minor::after {
+  color: var(--border);
+  background: var(--bg);
+}
+
+footer {
   color: var(--text-secondary);
 }
 
@@ -119,7 +136,6 @@ figcaption {
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.08);
 }
 
-/* Ticker dark mode - inverted (light bar on dark page) */
 .ticker {
   background: #e8e8e8;
   color: #1a1a1a;
@@ -139,4 +155,13 @@ figcaption {
 
 .ticker-sep {
   color: #666;
+}
+
+.feed-poster {
+  background: #1e1e1e;
+  border-color: var(--border);
+}
+
+.feed-panel-poster img {
+  border-color: var(--border);
 }
