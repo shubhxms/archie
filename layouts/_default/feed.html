@@ -10,7 +10,7 @@
 		</div>{{ end }}
 		<hr class="divider-main">
 		<section class="body feed-body">
-			{{ $films := hugo.Data.letterboxd }}
+			{{ $films := site.Data.letterboxd }}
 			{{ $months := slice }}
 			{{ range $films }}
 				{{ $m := substr .watched 0 7 }}
