@@ -567,22 +567,72 @@ svg {
   letter-spacing: 1px;
 }
 
-.feed-layout {
-  display: flex;
-  gap: 1.5em;
-  align-items: flex-start;
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.6rem;
 }
 
-.feed-posters {
-  flex: 1;
-  min-width: 0;
+.feed-card {
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.feed-card:hover {
+  transform: translateY(-2px);
+}
+
+.feed-card.active .feed-poster {
+  border-color: var(--text-secondary);
+}
+
+.feed-poster {
+  aspect-ratio: 2/3;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #f8f9fa;
+  transition: border-color 0.15s ease;
+}
+
+.feed-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.feed-meta {
+  margin-top: 0.2em;
+}
+
+.feed-film-title {
+  display: block;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.feed-film-year {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  font-family: 'Space Mono', monospace;
+}
+
+.feed-rating {
+  font-size: 0.35rem;
+  color: var(--border);
+  letter-spacing: 1px;
 }
 
 .feed-panel {
-  position: sticky;
-  top: 60px;
-  width: 280px;
-  flex-shrink: 0;
+  position: fixed;
+  top: 50%;
+  right: 210px;
+  width: 220px;
+  transform: translateY(-50%);
+  z-index: 50;
   animation: feed-panel-in 0.2s ease;
 }
 
@@ -802,15 +852,17 @@ svg {
     gap: 0.5rem;
   }
 
-  .feed-layout {
-    flex-direction: column;
-  }
-
   .feed-panel {
-    width: 100%;
     position: static;
+    transform: none;
+    width: 100%;
     border-top: 1px solid var(--border);
     padding-top: 0.8em;
+    margin-bottom: 1em;
+  }
+
+  .feed-panel-inner {
+    flex-direction: row;
   }
 
   .feed-panel-poster img {
