@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Only look for headings in the article body, not listings
   const body = content.querySelector('.body') || content;
-  const headings = Array.from(body.querySelectorAll('h2, h3')).filter(h => !h.classList.contains('feed-month-title'));
+  const headings = body.querySelectorAll('h2, h3');
   if (headings.length === 0) {
     indexContainer.style.display = 'none';
     return;
