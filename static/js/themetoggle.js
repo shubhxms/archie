@@ -1,35 +1,41 @@
-// Get system preference
 function getSystemTheme() {
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-// Apply theme to the document
+function getCurrentMode() {
+  return localStorage.getItem('theme-storage') || getSystemTheme();
+}
+
+function highlightButtons(mode) {
+  document.querySelectorAll('.theme-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.getAttribute('data-theme') === mode);
+  });
+}
+
 function applyTheme(mode) {
-    if (mode === "dark") {
-        document.getElementById("darkModeStyle").disabled = false;
-        document.getElementById("dark-mode-toggle").innerHTML = "<i data-feather=\"sun\"></i>";
-    } else {
-        document.getElementById("darkModeStyle").disabled = true;
-        document.getElementById("dark-mode-toggle").innerHTML = "<i data-feather=\"moon\"></i>";
-    }
-    feather.replace();
-    document.documentElement.setAttribute('data-theme', mode);
+  if (mode === 'dark') {
+    document.getElementById('darkModeStyle').disabled = false;
+  } else {
+    document.getElementById('darkModeStyle').disabled = true;
+  }
+  document.documentElement.setAttribute('data-theme', mode);
+  highlightButtons(mode);
 }
 
-// Get current theme (user preference or system default)
-function getCurrentTheme() {
-    const saved = localStorage.getItem("theme-storage");
-    return saved || getSystemTheme();
+function setTheme(mode) {
+  localStorage.setItem('theme-storage', mode);
+  applyTheme(mode);
 }
 
-// Toggle between light and dark
-function toggleTheme() {
-    const currentTheme = getCurrentTheme();
-    const newTheme = currentTheme === "light" ? "dark" : "light";
-    localStorage.setItem("theme-storage", newTheme);
-    applyTheme(newTheme);
-}
+var currentMode = getCurrentMode();
 
-// Initialize theme on page load
-const initialTheme = getCurrentTheme();
-applyTheme(initialTheme);
+if (currentMode === 'dark') {
+  document.getElementById('darkModeStyle').disabled = false;
+} else {
+  document.getElementById('darkModeStyle').disabled = true;
+}
+document.documentElement.setAttribute('data-theme', currentMode);
+
+document.addEventListener('DOMContentLoaded', function() {
+  highlightButtons(currentMode);
+});

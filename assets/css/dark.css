@@ -1,19 +1,15 @@
 :root {
-  --link: #8ab4f8;
-  --text: #e2e2e2;
-  --text-secondary: #a0a0a0;
-  --bg: #161616;
-  --border: #3a3a3a;
+  --link: #81A2BE;
+  --text: #C5C8C6;
+  --text-secondary: #969896;
+  --bg: #1C1D22;
+  --border: #373B41;
   --selection: #4a4a00;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
+  --accent: #C9A86A;
 }
 
 ::selection {
-  background: var(--selection);
+  background: #4a4a00;
 }
 
 a {
@@ -37,8 +33,12 @@ a:hover {
   background: var(--selection);
 }
 
-#dark-mode-toggle {
+.theme-btn {
   color: var(--text-secondary);
+}
+
+.theme-btn.active {
+  color: var(--text);
 }
 
 .git-info a {
@@ -66,7 +66,7 @@ blockquote {
 }
 
 pre {
-  background: #1e1e1e;
+  background: #1D1F21;
 }
 
 hr {
@@ -78,7 +78,7 @@ hr {
 }
 
 .divider-main::after {
-  color: var(--border);
+  color: var(--accent);
   background: var(--bg);
 }
 
@@ -104,7 +104,7 @@ table.posts tr:hover td {
 }
 
 .callout {
-  border-left-color: var(--border);
+  border-left-color: var(--accent);
 }
 
 .sidenote {
@@ -112,7 +112,7 @@ table.posts tr:hover td {
 }
 
 .sidenote-toggle {
-  color: var(--link);
+  color: var(--accent);
 }
 
 .meta, time {
@@ -124,16 +124,16 @@ figcaption {
 }
 
 .status-draft {
-  color: #ff6b6b;
+  color: #CC6666;
 }
 
 .grid-item {
-  background: #1e1e1e;
+  background: #1D1F21;
   border-color: var(--border);
 }
 
 .grid-item:hover {
-  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 16px rgba(201, 168, 106, 0.08);
 }
 
 .ticker {
@@ -158,10 +158,23 @@ figcaption {
 }
 
 .feed-poster {
-  background: #1e1e1e;
+  background: #1D1F21;
   border-color: var(--border);
 }
 
 .feed-panel-poster img {
   border-color: var(--border);
+}
+
+.heading-index a.active {
+  color: var(--accent);
+}
+
+.heading-index a:hover {
+  background: var(--selection);
+  color: var(--accent);
+}
+
+code {
+  background: #1D1F21;
 }
