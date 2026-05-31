@@ -28,7 +28,7 @@
 				Excluded: bare forks with no original work, pure study notes without code output.
 			*/}}
 			<div class="timeline">
-				{{ range hugo.Data.timeline }}
+				{{ range site.Data.timeline }}
 				<div class="tl-year-group">
 					<div class="tl-year">{{ .year }}</div>
 					{{ range .featured }}
