@@ -1,0 +1,81 @@
+{{ define "main" }}
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">{{ .Title }}</h1>
+		</div>
+		{{ if isset .Params "tldr" }}
+		<div class="tldr">
+			{{ .Params.tldr | markdownify }}
+		</div>{{ end }}
+		<hr class="divider-main">
+		<section class="body">
+			{{/*
+				TIMELINE CRITERIA (data/timeline.json)
+
+				featured — any shipped project, regardless of size.
+				  Original work with a repo, live demo, or academic deliverable.
+				  Gets full layout: title + tech, description, links.
+				  Academic entries marked with "academic" label.
+
+				minor — repos with no description or unclear purpose.
+				  Still mine, still shipped, just smaller or undocumented.
+
+				tutorials — guided learning, courses, books, coding challenges.
+				  Followed-along material, not original work.
+				  Compact inline, marked "also".
+
+				Excluded: bare forks with no original work, pure study notes without code output.
+			*/}}
+			<div class="timeline">
+				{{ range hugo.Data.timeline }}
+				<div class="tl-year-group">
+					<div class="tl-year">{{ .year }}</div>
+					{{ range .featured }}
+					<div class="tl-entry">
+						{{ if .month }}<span class="tl-month">{{ .month }}</span>{{ else }}<span class="tl-dot"></span>{{ end }}
+						<div class="tl-body">
+							<div class="tl-head">
+								<span class="tl-title">{{ .title }}</span>
+								<span class="tl-head-right">
+									{{ with .tech }}<span class="tl-tech">{{ . }}</span>{{ end }}
+									{{ if eq .cat "academic" }}<span class="tl-academic">academic</span>{{ end }}
+									{{ if eq .cat "work" }}<span class="tl-work">work</span>{{ end }}
+								</span>
+							</div>
+							{{ with .desc }}<div class="tl-desc">{{ . }}</div>{{ end }}
+							<div class="tl-links">
+								{{ if and .url .gh }}
+								<a href="{{ .url }}">demo</a> · <a href="https://github.com/{{ .gh }}">src</a>
+								{{ else if .url }}
+								<a href="{{ .url }}">demo</a>
+								{{ else if .gh }}
+								<a href="https://github.com/{{ .gh }}">src</a>
+								{{ end }}
+							</div>
+						</div>
+					</div>
+					{{ end }}
+					{{ if .minor }}
+					<div class="tl-minor">
+						<span class="tl-minor-label">also</span>
+						<span class="tl-minor-items">
+						{{ range $i, $e := .minor }}{{ if gt $i 0 }}<span class="tl-sep">·</span>{{ end }}<span class="tl-minor-item">{{ if .gh }}<a href="https://github.com/{{ .gh }}">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}{{ with .tech }}, {{ . }}{{ end }}</span>{{ end }}
+						</span>
+					</div>
+					{{ end }}
+					{{ if .tutorials }}
+					<div class="tl-minor tl-following">
+						<span class="tl-minor-label">also</span>
+						<span class="tl-minor-items">
+						{{ range $i, $e := .tutorials }}{{ if gt $i 0 }}<span class="tl-sep">·</span>{{ end }}<span class="tl-minor-item">{{ if .gh }}<a href="https://github.com/{{ .gh }}">{{ .title }}</a>{{ else }}{{ .title }}{{ end }}{{ with .tech }}, {{ . }}{{ end }}</span>{{ end }}
+						</span>
+					</div>
+					{{ end }}
+				</div>
+				{{ end }}
+			</div>
+		</section>
+	</article>
+</main>
+{{ end }}
