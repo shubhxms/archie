@@ -145,77 +145,101 @@
     return films;
   }
 
-  function renderFilms(films) {
+  function buildCardHtml(f) {
+    var ratingAttr = f.rating != null ? f.rating.toFixed(1) : "";
+    var starsHtml = "";
+    if (f.rating) {
+      starsHtml = '<span class="feed-rating">';
+      for (var i = 1; i <= 5; i++) {
+        if (i <= Math.floor(f.rating)) starsHtml += "●";
+        else if (i === Math.ceil(f.rating) && f.rating % 1 > 0) starsHtml += "◐";
+      }
+      starsHtml += "</span>";
+    }
+
+    return '<div class="feed-card"'
+      + ' data-title="' + esc(f.title) + '"'
+      + ' data-year="' + (f.year || "") + '"'
+      + ' data-rating="' + ratingAttr + '"'
+      + ' data-rewatch="' + f.rewatch + '"'
+      + ' data-review="' + esc(f.review).replace(/\n/g, "&#10;") + '"'
+      + ' data-watched="' + f.watched + '"'
+      + ' data-poster="' + esc(f.poster || "") + '"'
+      + ' data-link="' + esc(f.link) + '">'
+      + '<div class="feed-poster">'
+      + '<img src="' + esc(f.poster || "") + '" alt="' + esc(f.title) + '" loading="lazy">'
+      + "</div>"
+      + '<div class="feed-meta">'
+      + '<span class="feed-film-title">' + esc(f.title) + "</span>"
+      + '<span class="feed-film-year">' + (f.year || "") + "</span>"
+      + starsHtml
+      + "</div></div>";
+  }
+
+  var monthNames = [
+    "January","February","March","April","May","June",
+    "July","August","September","October","November","December"
+  ];
+
+  function mergeFilms(films) {
+    // collect existing film links from static content
+    var existing = new Set();
+    document.querySelectorAll(".feed-card").forEach(function (card) {
+      var link = card.dataset.link;
+      if (link) existing.add(link);
+    });
+
+    // filter to only new films
+    var newFilms = films.filter(function (f) { return !existing.has(f.link); });
+    if (!newFilms.length) return;
+
+    // group new films by month
     var grouped = {};
-    films.forEach(function (f) {
+    newFilms.forEach(function (f) {
       var m = f.watched.substring(0, 7);
       if (!grouped[m]) grouped[m] = [];
       grouped[m].push(f);
     });
     var sorted = Object.keys(grouped).sort().reverse();
 
-    var monthNames = [
-      "January","February","March","April","May","June",
-      "July","August","September","October","November","December"
-    ];
-
-    var html = "";
-    sorted.forEach(function (m) {
-      var d = new Date(m + "-01T00:00:00");
-      html += '<div class="feed-month" data-month="' + m + '">';
-      html += '<h2 class="feed-month-title">' + monthNames[d.getMonth()] + " " + d.getFullYear() + "</h2>";
-      html += '<div class="feed-grid">';
-
-      grouped[m].forEach(function (f) {
-        var ratingAttr = f.rating != null ? f.rating.toFixed(1) : "";
-        var starsHtml = "";
-        if (f.rating) {
-          starsHtml = '<span class="feed-rating">';
-          for (var i = 1; i <= 5; i++) {
-            if (i <= Math.floor(f.rating)) starsHtml += "●";
-            else if (i === Math.ceil(f.rating) && f.rating % 1 > 0) starsHtml += "◐";
-          }
-          starsHtml += "</span>";
-        }
-
-        html += '<div class="feed-card"'
-          + ' data-title="' + esc(f.title) + '"'
-          + ' data-year="' + (f.year || "") + '"'
-          + ' data-rating="' + ratingAttr + '"'
-          + ' data-rewatch="' + f.rewatch + '"'
-          + ' data-review="' + esc(f.review).replace(/\n/g, "&#10;") + '"'
-          + ' data-watched="' + f.watched + '"'
-          + ' data-poster="' + esc(f.poster || "") + '"'
-          + ' data-link="' + esc(f.link) + '">'
-          + '<div class="feed-poster">'
-          + '<img src="' + esc(f.poster || "") + '" alt="' + esc(f.title) + '" loading="lazy">'
-          + "</div>"
-          + '<div class="feed-meta">'
-          + '<span class="feed-film-title">' + esc(f.title) + "</span>"
-          + '<span class="feed-film-year">' + (f.year || "") + "</span>"
-          + starsHtml
-          + "</div></div>";
-      });
-
-      html += "</div></div>";
-    });
-
     var body = document.querySelector(".feed-body");
     if (!body) return;
-
-    body.querySelectorAll(".feed-month").forEach(function (el) { el.remove(); });
-
     var panelEl = document.getElementById("feed-panel");
-    if (panelEl) {
-      panelEl.insertAdjacentHTML("afterend", html);
-    } else {
-      body.insertAdjacentHTML("beforeend", html);
-    }
+
+    sorted.forEach(function (m) {
+      var monthEl = body.querySelector('.feed-month[data-month="' + m + '"]');
+      var cardsHtml = grouped[m].map(buildCardHtml).join("");
+
+      if (monthEl) {
+        // prepend cards to existing month grid
+        monthEl.querySelector(".feed-grid").insertAdjacentHTML("afterbegin", cardsHtml);
+      } else {
+        // create new month section
+        var d = new Date(m + "-01T00:00:00");
+        var section = '<div class="feed-month" data-month="' + m + '">'
+          + '<h2 class="feed-month-title">' + monthNames[d.getMonth()] + " " + d.getFullYear() + "</h2>"
+          + '<div class="feed-grid">' + cardsHtml + "</div></div>";
+
+        // insert before the first existing month that's older
+        var inserted = false;
+        body.querySelectorAll(".feed-month").forEach(function (el) {
+          if (!inserted && el.dataset.month < m) {
+            el.insertAdjacentHTML("beforebegin", section);
+            inserted = true;
+          }
+        });
+        if (!inserted) {
+          var target = panelEl ? panelEl.nextSibling : null;
+          if (target) target.insertAdjacentHTML("beforebegin", section);
+          else body.insertAdjacentHTML("beforeend", section);
+        }
+      }
+    });
   }
 
   fetch(PROXY)
     .then(function (r) { return r.ok ? r.text() : Promise.reject(r.status); })
     .then(parseRSS)
-    .then(function (films) { if (films.length) renderFilms(films); })
+    .then(function (films) { if (films.length) mergeFilms(films); })
     .catch(function () {});
 })();
