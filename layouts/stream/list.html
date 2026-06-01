@@ -1,0 +1,14 @@
+{{ define "main" }}
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">{{ .Title }}</h1>
+		</div>
+		<hr class="divider-main">
+		<section class="body">
+			<div id="stream-drops"></div>
+		</section>
+	</article>
+	<script src="{{ "js/stream.js" | relURL }}"></script>
+</main>
+{{ end }}
