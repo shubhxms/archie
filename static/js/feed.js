@@ -72,7 +72,7 @@
   // --- Realtime RSS pull ---
 
   var RSS_URL = "https://letterboxd.com/sav1tr/rss/";
-  var PROXY = "https://api.allorigins.win/raw?url=" + encodeURIComponent(RSS_URL);
+  var PROXY = "https://cors-proxy.shubhxms.workers.dev/?url=" + encodeURIComponent(RSS_URL);
 
   function esc(s) {
     return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
