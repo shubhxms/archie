@@ -764,33 +764,28 @@ svg {
     font-family: "Space Mono", monospace;
 }
 
-/* Stream - drops grouped by month */
-.stream-month {
-    margin-bottom: 1.8em;
-}
-
-.stream-month-title {
-    font-size: 1.1rem;
-    margin-bottom: 0.8em;
+/* Stream - dense chronological flow, Tufte sidenote dates */
+.stream-count {
+    font-family: "Space Mono", monospace;
+    font-size: 0.8rem;
     color: var(--text-secondary);
+    margin-bottom: 1.2em;
 }
 
 .stream-drop {
-    margin-bottom: 1em;
-    padding-left: 0.2em;
+    position: relative;
+    margin-bottom: 1.2em;
+    padding-right: 8em;
 }
 
 .stream-date {
-    display: block;
+    position: absolute;
+    right: 0;
+    top: 0.15em;
     font-family: "Space Mono", monospace;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--text-secondary);
-    text-decoration: none;
-    margin-bottom: 0.2em;
-}
-
-.stream-date:hover {
-    color: var(--link);
+    white-space: nowrap;
 }
 
 .stream-content {
@@ -798,23 +793,50 @@ svg {
 }
 
 .stream-content p {
-    margin: 0.2em 0;
+    margin: 0.15em 0;
 }
 
 .stream-content p:first-child {
     margin-top: 0;
 }
 
+.stream-content a {
+    word-break: break-all;
+}
+
 .stream-img {
-    max-width: 320px;
-    border-radius: 4px;
+    max-width: 100%;
+    border-radius: 2px;
     margin-top: 0.4em;
+}
+
+.stream-more {
+    display: block;
+    margin: 1em 0;
+    padding: 0.3em 0;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    background: none;
+    font-family: "Space Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.stream-more:hover:not(:disabled) {
+    color: var(--link);
+    border-color: var(--link);
+}
+
+.stream-more-done {
+    cursor: default;
+    border-bottom-style: dotted;
 }
 
 .stream-error {
     color: var(--text-secondary);
 }
-
 
 /* Timeline
    featured: substantial depth of work (full layout)
@@ -1158,6 +1180,18 @@ svg {
 
     .tl-entry::before {
         left: -1.2rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .stream-drop {
+        padding-right: 0;
+    }
+
+    .stream-date {
+        position: static;
+        display: block;
+        margin-bottom: 0.15em;
     }
 }
 
