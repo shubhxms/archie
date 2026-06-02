@@ -20,13 +20,12 @@
   template "_internal/opengraph.html" . -}} {{- template
   "_internal/twitter_cards.html" . -}}
 
-  <!-- Google Fonts: Source Serif 4 + Space Grotesk + Space Mono -->
+  <!-- Google Fonts: Source Serif 4 + Space Mono | Fontshare: Zodiak -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=Space+Mono:wght@400;700&display=optional" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=Space+Mono:wght@400;700&display=optional" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@700,900&display=optional" rel="stylesheet">
 
   {{ $style := resources.Get "css/main.css" | resources.Minify }}
   <link

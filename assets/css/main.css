@@ -64,10 +64,8 @@ body {
     right: 30px;
     bottom: 32px;
     text-align: right;
-    font-family:
-        "Space Grotesk",
-        -apple-system,
-        sans-serif;
+    font-family: "Space Mono",
+        monospace;
     font-weight: 500;
     display: flex;
     flex-direction: column;
@@ -205,10 +203,12 @@ h6 {
 
 .title h1 {
     font-size: 3rem;
+    font-weight: 900;
     margin-top: 0;
     margin-bottom: 0.15em;
-    letter-spacing: -0.035em;
+    letter-spacing: 0em;
 }
+
 
 /* Abstract / TLDR - minimal, no decoration */
 .tldr {
