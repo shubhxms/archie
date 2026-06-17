@@ -892,7 +892,7 @@ svg {
 }
 
 .tl-year {
-    font-family: 'DM Sans', sans-serif;
+    font-family: et-book, Palatino, Georgia, serif;
     font-weight: 600;
     font-size: 1.3em;
     color: var(--text);
@@ -952,7 +952,7 @@ svg {
 }
 
 .tl-title {
-    font-family: 'DM Sans', sans-serif;
+    font-family: et-book, Palatino, Georgia, serif;
     font-weight: 600;
     font-size: 0.95em;
 }
