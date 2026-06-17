@@ -276,6 +276,7 @@ a:hover {
 p {
     margin: 0.4em 0;
     line-height: 1.45;
+    text-align: justify;
 }
 
 ul,
