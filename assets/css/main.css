@@ -131,6 +131,11 @@ body {
     background: var(--selection);
     text-decoration: none;
 }
+.sidebar-nav a.active-page {
+    color: var(--text);
+    font-weight: 700;
+    text-decoration: none;
+}
 
 /* Sidebar meta - theme toggle inline */
 .sidebar-meta {
@@ -1088,7 +1093,7 @@ svg {
     .sidebar-nav {
         display: flex;
         flex-wrap: wrap;
-        gap: 4px 12px;
+        gap: 6px 8px;
         line-height: 1.5;
     }
 
@@ -1100,13 +1105,14 @@ svg {
 
     .sidebar-nav a {
         display: inline-block;
-        padding: 2px 6px;
-        border-radius: 3px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-decoration: none;
         transition: background-color 0.15s ease;
     }
 
     .sidebar-nav a:hover {
-        border-radius: 3px;
+        border-radius: 5px;
     }
 
     .sidebar-meta {
@@ -1226,7 +1232,7 @@ svg {
     }
 
     .sidebar-nav {
-        gap: 2px 8px;
+        gap: 6px 6px;
         font-size: 13px;
     }
 
