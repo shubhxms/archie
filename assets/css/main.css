@@ -1,3 +1,26 @@
+/* ET Book — Tufte's typeface for body text. Self-hosted woff (Palatino system fallback). */
+@font-face {
+    font-family: "et-book";
+    src: url("/fonts/et-book/et-book-roman-line-figures.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "et-book";
+    src: url("/fonts/et-book/et-book-display-italic-old-style-figures.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: "et-book";
+    src: url("/fonts/et-book/et-book-bold-line-figures.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --link: #3b6cc9;
     --text: #202122;
@@ -9,7 +32,7 @@
 }
 
 html {
-    font-family: "Source Serif 4", Georgia, serif;
+    font-family: et-book, Palatino, "URW Palladio L", "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.4;
@@ -19,6 +42,7 @@ html {
 }
 
 body {
+    font-size: 17px;
     margin: 0;
     padding: 0;
     background: var(--bg);
@@ -176,7 +200,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Zodiak', Georgia, serif;
+    font-family: Palatino, "URW Palladio L", "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
     font-weight: 700;
     color: var(--text);
     margin: 0.8em 0 0.15em 0;
