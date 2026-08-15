@@ -117,10 +117,17 @@ body.layout-wide {
 }
 
 .shell-footer {
-    grid-column: 1 / span 2;
+    grid-column: 1;
     grid-row: 3;
     align-self: end;
+    width: var(--main-column-width);
+    max-width: 100%;
+}
+
+.page-shell:has(.side-rail) .shell-footer {
+    grid-column: 1 / span 2;
     width: 100%;
+    max-width: none;
 }
 
 .page-single .page-shell {
@@ -1259,7 +1266,8 @@ svg {
         max-width: 100%;
     }
 
-    .shell-footer {
+    .shell-footer,
+    .page-shell:has(.side-rail) .shell-footer {
         grid-column: 1;
         grid-row: 4;
         width: var(--main-column-width);
@@ -2065,9 +2073,12 @@ samp {
         max-width: 100%;
     }
 
-    .home-shell-footer {
+    .home-shell-footer,
+    .page-home .page-shell:has(.side-rail) .home-shell-footer {
         grid-column: 1;
         grid-row: 5;
+        width: var(--main-column-width);
+        max-width: 100%;
     }
 
     .page-home .sidebar {
