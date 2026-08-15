@@ -1,22 +1,22 @@
-/* Dark-mode token overrides for the same inky-blue paper palette. */
+/* Warm, high-contrast counterpart to the icy light palette. */
 :root {
-    --link: #9fb3ff;
-    --visited: #9fb3ff;
-    --text: #f5faff;
-    --text-secondary: #b8c3dd;
-    --bg: #0d1226;
-    --surface: #141b34;
-    --card-bg: #141b34;
-    --border: #8996b8;
-    --selection: #fff36d;
-    --selection-text: #0d1226;
-    --accent: #9fb3ff;
-    --danger: #ff9b9b;
-    --shadow: rgba(0, 0, 0, 0.42);
-    --overlay: rgba(5, 8, 18, 0.9);
-    --overlay-text: #f5faff;
-    --ticker-bg: #f5faff;
-    --ticker-text: #0d1226;
-    --ticker-hover: #fff36d;
-    --ticker-separator: rgba(13, 18, 38, 0.48);
+    --link: #ffd166;
+    --visited: #ffd166;
+    --text: #f7f2e7;
+    --text-secondary: #c2bdaf;
+    --bg: #10131c;
+    --surface: #191e2b;
+    --card-bg: #191e2b;
+    --border: #817b6d;
+    --selection: #3656c9;
+    --selection-text: #fff;
+    --accent: #ffd166;
+    --danger: #ff8f8f;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --overlay: rgba(5, 7, 12, 0.92);
+    --overlay-text: #f7f2e7;
+    --ticker-bg: #f7f2e7;
+    --ticker-text: #10131c;
+    --ticker-hover: #ffe38a;
+    --ticker-separator: rgba(16, 19, 28, 0.5);
 }
