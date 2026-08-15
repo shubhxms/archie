@@ -11,7 +11,7 @@
         <main class="main-content">
         <div class="content">
           {{- block "main" . }}{{- end }}
-          {{- partial "footer.html" . -}}
+          {{- if not .IsHome }}{{ partial "footer.html" . }}{{ end -}}
           <nav class="heading-index" id="heading-index"></nav>
         </div>
         </main>
@@ -65,6 +65,11 @@
           {{ end }}
         </nav>
       </aside>
+      {{- if .IsHome }}
+      <div class="home-shell-footer">
+        {{- partial "footer.html" . -}}
+      </div>
+      {{- end }}
     </div>
     <script src="{{ "js/heading-index.js" | relURL }}?v=2"></script>
     <script src="{{ "js/ticker-scroll.js" | relURL }}"></script>
