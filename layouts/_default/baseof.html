@@ -2,7 +2,8 @@
 <html lang="{{ .Site.Language.Lang }}">
   {{- partial "head.html" . -}}
   {{- $layoutClass := cond (.Param "wide") "layout-wide" "layout-reading" -}}
-  <body class="{{ $layoutClass }}">
+  {{- $pageClass := cond .IsHome " page-home" "" -}}
+  <body class="{{ $layoutClass }}{{ $pageClass }}">
     {{- partial "ticker.html" . -}}
     <div class="page-shell">
       <div class="page-wrapper">
