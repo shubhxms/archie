@@ -22,8 +22,30 @@ document.addEventListener('DOMContentLoaded', function() {
   const inner = document.createElement('div');
   inner.className = 'heading-index-inner';
 
-  headings.forEach((h, i) => {
-    if (!h.id) h.id = 'heading-' + i;
+  const usedIds = new Set(Array.from(document.querySelectorAll('[id]'), element => element.id));
+
+  function headingTitle(heading) {
+    const copy = heading.cloneNode(true);
+    copy.querySelectorAll('.roman-numeral, .heading-anchor').forEach(element => element.remove());
+    return copy.textContent.trim();
+  }
+
+  function slugifyHeading(heading) {
+    const base = headingTitle(heading)
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[’']/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '') || 'section';
+    let slug = base;
+    let suffix = 2;
+    while (usedIds.has(slug)) slug = `${base}-${suffix++}`;
+    usedIds.add(slug);
+    return slug;
+  }
+  headings.forEach(h => {
+    if (!h.id) h.id = slugifyHeading(h);
 
     // Add anchor link with SVG icon to heading
     const anchor = document.createElement('a');
@@ -36,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const link = document.createElement('a');
     link.href = '#' + h.id;
     link.textContent = h.textContent;
-    link.title = h.textContent;
     if (h.tagName === 'H3') link.classList.add('h3');
     inner.appendChild(link);
   });
