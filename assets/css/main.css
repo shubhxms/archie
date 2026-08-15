@@ -1763,6 +1763,13 @@ samp {
     .page-home .layout-side-rail {
         grid-column: 1;
         grid-row: 3;
+        padding-left: 0;
+    }
+
+    /* The rail is no longer a separate column here. */
+    .page-home .layout-side-rail .side-rail {
+        padding-left: 0;
+        border-left: 0;
     }
 
     .home-shell-footer {
@@ -1945,4 +1952,30 @@ samp {
         font-size: 1rem;
     }
 
+    /* Stack the homepage footer after both editorial columns. */
+    .page-home .page-shell {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .page-home .home-site-header {
+        order: 1;
+    }
+
+    .page-home .page-wrapper {
+        order: 2;
+    }
+
+    .page-home .layout-side-rail {
+        order: 3;
+    }
+
+    .page-home .home-shell-footer {
+        order: 4;
+        align-self: stretch;
+    }
+
+    .page-home .sidebar {
+        order: 5;
+    }
 }
