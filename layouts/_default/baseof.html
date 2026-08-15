@@ -11,20 +11,22 @@
         <main class="main-content">
         <div class="content">
           {{- block "main" . }}{{- end }}
-          {{- if not .IsHome }}{{ partial "footer.html" . }}{{ end -}}
           <nav class="heading-index" id="heading-index"></nav>
         </div>
         </main>
       </div>
       <aside class="layout-side-rail" aria-label="Page side rail">
         {{- range (.Store.Get "sideRail") }}
-        <section class="side-rail" data-rail-anchor="rail-anchor-{{ .ordinal }}">{{ .content }}</section>
+        <section class="side-rail">{{ .content }}</section>
         {{- end }}
         {{- range (.Store.Get "sidenotes") }}
-        <aside class="sidenote" id="sn-{{ .ordinal }}-rail" data-rail-anchor="sn-{{ .ordinal }}-anchor">{{ .content }}</aside>
+        <aside class="sidenote" id="sn-{{ .ordinal }}-rail">{{ .content }}</aside>
         {{- end }}
         {{- block "rail" . }}{{- end }}
       </aside>
+      <div class="shell-footer{{ if .IsHome }} home-shell-footer{{ end }}">
+        {{- partial "footer.html" . -}}
+      </div>
       <aside class="sidebar">
         <nav class="sidebar-nav">
           <div class="site-title">
@@ -65,14 +67,8 @@
           {{ end }}
         </nav>
       </aside>
-      {{- if .IsHome }}
-      <div class="home-shell-footer">
-        {{- partial "footer.html" . -}}
-      </div>
-      {{- end }}
     </div>
     <script src="{{ "js/heading-index.js" | relURL }}?v=5"></script>
     <script src="{{ "js/ticker-scroll.js" | relURL }}"></script>
-    <script src="{{ "js/side-rail.js" | relURL }}?v=4" defer></script>
   </body>
 </html>

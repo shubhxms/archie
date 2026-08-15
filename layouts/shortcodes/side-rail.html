@@ -1,3 +1,2 @@
 {{- $content := .Inner | .Page.RenderString -}}
 {{- .Page.Store.Add "sideRail" (slice (dict "ordinal" .Ordinal "content" $content)) -}}
-<span class="rail-anchor" id="rail-anchor-{{ .Ordinal }}" aria-hidden="true"></span>
