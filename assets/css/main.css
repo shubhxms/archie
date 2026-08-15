@@ -470,17 +470,28 @@ time,
 
 /* Footer */
 footer {
-    margin-top: 0;
-    font-size: 0.75rem;
+    position: fixed;
+    left: var(--shell-left-padding);
+    bottom: 0;
+    width: var(--main-column-width);
+    margin: 0;
+    padding: 0.28rem 0 0.38rem;
+    box-sizing: border-box;
+    background: var(--bg);
     color: var(--text-secondary);
-    font-family:
-        "Space Grotesk",
-        -apple-system,
-        sans-serif;
-}
+    font-family: "Space Mono", monospace;
+    font-size: 0.68rem;
+    line-height: 1.2;
+    z-index: 90;
 
 .footer-divider {
-    margin: 0.6em 0 0.3em;
+    position: fixed;
+    left: var(--shell-left-padding);
+    bottom: 1.5rem;
+    width: var(--main-column-width);
+    margin: 0;
+    background: var(--bg);
+    z-index: 91;
 }
 
 .footer-divider::before {
@@ -1318,59 +1329,63 @@ svg {
     }
 }
 
-/* Heading index fixed at bottom */
+/* Heading index: vertical section ticks beside the reading column. */
 .heading-index {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: var(--bg);
-    padding: 6px 16px 6px var(--shell-left-padding);
-    font-size: 11px;
-    font-family: "Space Mono", monospace;
+    top: 50%;
+    bottom: auto;
+    left: calc(var(--shell-left-padding) - 2rem);
+    right: auto;
+    width: 1.5rem;
+    padding: 0;
+    background: transparent;
+    transform: translateY(-50%);
     z-index: 100;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: none;
-    border-top: 1px solid transparent;
-    transition: border-top-color 0.2s ease;
+    overflow: visible;
+    white-space: normal;
+    border: 0;
 }
 
-.heading-index:hover {
-    border-top-color: var(--border);
-}
 
 .heading-index::-webkit-scrollbar {
     display: none;
 }
 
 .heading-index-inner {
-    display: inline-flex;
-    gap: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.42rem;
 }
 
 .heading-index a {
-    display: inline-block;
-    padding: 2px 8px;
-    color: var(--text-secondary);
+    display: block;
+    width: 0.75rem;
+    height: 2px;
+    padding: 0;
+    overflow: hidden;
+    color: transparent;
+    background: var(--text);
+    font-size: 0;
     text-decoration: none;
-    border-radius: 3px;
-    transition: background 0.15s ease;
+    border-radius: 0;
+    transition: width 0.15s ease, background 0.15s ease;
 }
 
 .heading-index a.h3 {
-    padding-left: 14px;
-    font-size: 10px;
+    width: 0.45rem;
+    padding: 0;
+    font-size: 0;
 }
 
 .heading-index a.active {
+    width: 1.4rem;
     background: var(--selection);
-    color: var(--text);
 }
 
 .heading-index a:hover {
+    width: 1.4rem;
     background: var(--selection);
-    color: var(--text);
 }
 
 /* Anchor link buttons for headings */
@@ -1462,7 +1477,7 @@ h3:hover .heading-anchor {
 
 /* Crimson Text for reading; Urbanist for headings and navigation. */
 body,
-body *:not(pre):not(pre *):not(code):not(code *):not(kbd):not(kbd *):not(samp):not(samp *):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(.sidebar):not(.sidebar *):not(.heading-index):not(.heading-index *):not(.home-editorial):not(.home-editorial *) {
+body *:not(pre):not(pre *):not(code):not(code *):not(kbd):not(kbd *):not(samp):not(samp *):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(.sidebar):not(.sidebar *):not(.heading-index):not(.heading-index *):not(.home-editorial):not(.home-editorial *):not(footer):not(footer *) {
     font-family: "Crimson Text", Georgia, serif;
 }
 
@@ -1735,9 +1750,6 @@ samp {
 }
 
 .page-home .layout-side-rail .side-rail {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
     margin: 0;
     padding-top: 0;
     padding-bottom: 0;
@@ -1773,8 +1785,8 @@ samp {
 }
 
 .home-rail-shelf {
-    margin-top: auto;
-    padding-top: 0.8rem;
+    margin-top: 0.8rem;
+    padding-top: 0;
 }
 
 .home-rail-shelf h2 {
@@ -1808,5 +1820,19 @@ samp {
 
     .home-deck {
         font-size: 1rem;
+    }
+
+    footer,
+    .footer-divider {
+        position: static;
+        width: 100%;
+    }
+
+    footer {
+        padding: 0;
+    }
+
+    .footer-divider {
+        margin: 0.6em 0 0.3em;
     }
 }

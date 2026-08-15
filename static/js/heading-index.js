@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const link = document.createElement('a');
     link.href = '#' + h.id;
     link.textContent = h.textContent;
+    link.title = h.textContent;
     if (h.tagName === 'H3') link.classList.add('h3');
     inner.appendChild(link);
   });
