@@ -665,12 +665,28 @@ table.posts td:first-child {
 
 /* Callout */
 .callout {
-    background: none;
-    padding: 0.7em 0 0.7em 0.8em;
-    border: none;
-    border-left: 2px solid var(--accent);
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.65rem;
+    margin: 0.85rem 0;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid var(--text);
+    background: var(--selection);
+    box-shadow: 3px 3px 0 var(--accent);
+    color: var(--selection-text);
+    font-family: "Space Mono", monospace;
+    font-size: 0.72rem;
+    line-height: 1.5;
+}
+
+.callout::before {
+    content: "*";
+    color: var(--selection-text);
+    font-weight: 700;
+}
+
+.callout-inner {
+    min-width: 0;
 }
 
 /* Sidenotes become linked footnotes when the rail is occupied or stacked. */
