@@ -21,7 +21,7 @@
     --ticker-hover: #fff36d;
     --ticker-separator: #fff;
     --side-rail-gap: 2rem;
-    --side-rail-width: clamp(22rem, 30vw, 30rem);
+    --side-rail-width: 500px;
     --side-rail-left-space: clamp(0.75rem, 1.5vw, 1.25rem);
     --sidebar-width: 10rem;
     --main-column-width: 500px;
@@ -1093,7 +1093,7 @@ svg {
 
 
 
-@media (max-width: 1279px) {
+@media (max-width: 1399px) {
     .page-shell {
         grid-template-columns: minmax(0, 1fr) var(--sidebar-width);
         max-width: none;
@@ -1745,9 +1745,16 @@ samp {
     grid-row: 1 / span 3;
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 1399px) {
     .page-home .page-shell {
         grid-template-rows: auto auto auto auto;
+    }
+
+    /* Keep every stacked editorial block on the same measure. */
+    .home-site-header,
+    .home-shell-footer {
+        width: var(--main-column-width);
+        max-width: 100%;
     }
 
     .home-site-header {

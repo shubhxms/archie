@@ -4,7 +4,7 @@
 
 	function layoutRail() {
 		var items = rail.querySelectorAll("[data-rail-anchor]");
-			var desktop = window.innerWidth >= 1280;
+		var desktop = window.innerWidth >= 1400;
 		var railTop = rail.getBoundingClientRect().top;
 		var nextTop = 0;
 
