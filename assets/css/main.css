@@ -21,6 +21,7 @@
     --ticker-separator: #fff;
     --side-rail-gap: 2rem;
     --side-rail-width: clamp(22rem, 30vw, 30rem);
+    --side-rail-left-space: clamp(0.75rem, 1.5vw, 1.25rem);
     --sidebar-width: 10rem;
     --main-column-width: 500px;
     --shell-left-padding: 6%;
@@ -56,7 +57,7 @@ body.layout-wide {
 /* Three-lane desktop shell: main column, on-demand rail, navigation. */
 .page-shell {
     display: grid;
-    grid-template-columns: minmax(0, var(--main-column-width)) minmax(0, var(--side-rail-width)) minmax(0, 1fr) var(--sidebar-width);
+    grid-template-columns: minmax(0, var(--main-column-width)) minmax(0, calc(var(--side-rail-width) + var(--side-rail-left-space))) minmax(0, 1fr) var(--sidebar-width);
     gap: var(--side-rail-gap);
     align-items: start;
     width: 100%;
@@ -81,7 +82,7 @@ body.layout-wide {
     align-self: stretch;
     min-width: 0;
     width: 100%;
-    padding-left: clamp(0.75rem, 1.5vw, 1.25rem);
+    padding-left: var(--side-rail-left-space);
     box-sizing: border-box;
 }
 
@@ -1089,7 +1090,7 @@ svg {
 
 
 
-@media (max-width: 1199px) {
+@media (max-width: 1279px) {
     .page-shell {
         grid-template-columns: minmax(0, 1fr) var(--sidebar-width);
         max-width: none;
@@ -1739,7 +1740,7 @@ samp {
     grid-row: 1 / span 3;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1279px) {
     .page-home .page-shell {
         grid-template-rows: auto auto auto auto;
     }
