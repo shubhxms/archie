@@ -1624,6 +1624,20 @@ samp {
     line-height: 1.4;
 }
 
+/* Shared editorial heading treatment across prose pages. */
+.main-content .content h2 {
+    padding-bottom: 0.12rem;
+    border-bottom: 1px solid var(--text);
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.035em;
+}
+
+.main-content .content h3 {
+    font-weight: 700;
+}
+
 /* Editorial home: compact catalogue in the main column, visual notes in the rail. */
 .home-editorial {
     font-family: "Crimson Text", Georgia, serif;
@@ -1735,14 +1749,50 @@ samp {
     line-height: 1.25;
 }
 
-.home-section-selected .home-link-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.5rem 1rem;
+.home-starter-pack {
+    margin-bottom: 0.8rem;
 }
 
-.home-section-selected .home-link-list li {
+.home-starter-pack h2 {
+    margin: 0 0 0.28rem;
+    padding-bottom: 0.12rem;
+    border-bottom: 1px solid var(--text);
+    font-family: "Urbanist", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.035em;
+}
+
+.home-starter-links,
+.home-permanent-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.28rem 0.5rem;
+}
+
+.home-starter-links li,
+.home-permanent-links li {
     margin: 0;
+}
+
+.home-starter-links a,
+.home-permanent-links a {
+    display: block;
+    width: 100%;
+    padding: 0.12rem 0.2rem;
+    box-sizing: border-box;
+}
+
+.home-starter-links a strong,
+.home-permanent-links a strong {
+    display: inline;
+}
+
+.home-starter-links a:hover,
+.home-permanent-links a:hover {
+    background: var(--selection);
 }
 
 .home-index {
@@ -1759,8 +1809,12 @@ samp {
     padding-bottom: 0;
 }
 
+.page-home .layout-side-rail .side-rail > h2 {
+    margin: 0.8rem 0 0.28rem;
+}
+
 .home-rail-feature {
-    margin-bottom: 0.55rem;
+    margin-bottom: 0;
 }
 
 .home-rail-feature img {
@@ -1808,7 +1862,8 @@ samp {
         font-size: 1rem;
     }
 
-    .home-section-selected .home-link-list {
+    .home-starter-links,
+    .home-permanent-links {
         grid-template-columns: 1fr;
         gap: 0.42rem;
     }
