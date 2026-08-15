@@ -5,18 +5,19 @@
     --visited: #1827a3;
     --text: #000;
     --text-secondary: #000;
-    --bg: #fff;
-    --surface: #fff;
-    --card-bg: #fff;
+    --bg: #f5faff;
+    --surface: #f5faff;
+    --card-bg: #f5faff;
     --border: #000;
     --selection: #fff36d;
+    --selection-text: #000;
     --accent: #1827a3;
     --danger: #000;
     --shadow: rgba(0, 0, 0, 0.12);
     --overlay: rgba(0, 0, 0, 0.86);
-    --overlay-text: #fff;
+    --overlay-text: #f5faff;
     --ticker-bg: #000;
-    --ticker-text: #fff;
+    --ticker-text: #f5faff;
     --ticker-hover: #fff36d;
     --ticker-separator: #fff;
     --side-rail-gap: 2rem;
@@ -150,6 +151,7 @@ body.layout-wide {
 
 .sidebar-nav a:hover {
     background: var(--selection);
+    color: var(--selection-text);
     text-decoration: none;
 }
 .sidebar-nav a.active-page {
@@ -287,7 +289,7 @@ a:visited {
 
 a:hover {
     background: var(--selection);
-    color: var(--text);
+    color: var(--selection-text);
     text-decoration: none;
 }
 
@@ -1366,7 +1368,8 @@ svg {
 .heading-index-inner {
     display: none;
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     left: calc(100% + 0.3rem);
     flex-direction: column;
     width: min(16rem, calc(100vw - 4rem));
@@ -1405,7 +1408,7 @@ svg {
 .heading-index-inner a:focus-visible,
 .heading-index-inner a.active {
     background: var(--selection);
-    color: var(--text);
+    color: var(--selection-text);
 }
 
 .heading-index-inner a.active::before {

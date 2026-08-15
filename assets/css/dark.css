@@ -1,180 +1,22 @@
+/* Dark-mode token overrides for the same inky-blue paper palette. */
 :root {
-  --link: #81A2BE;
-  --text: #C5C8C6;
-  --text-secondary: #969896;
-  --bg: #1C1D22;
-  --border: #373B41;
-  --selection: #4a4a00;
-  --accent: #C9A86A;
-}
-
-::selection {
-  background: #4a4a00;
-}
-
-a {
-  color: var(--link);
-}
-
-a:hover {
-  background: var(--selection);
-  text-decoration: none;
-}
-
-.sidebar-nav .site-title a {
-  color: var(--text);
-}
-
-.sidebar-nav a {
-  color: var(--link);
-}
-
-.sidebar-nav a:hover {
-  background: var(--selection);
-}
-
-.theme-btn {
-  color: var(--text-secondary);
-}
-
-.theme-btn.active {
-  color: var(--text);
-}
-
-.git-info a {
-  color: var(--text-secondary);
-}
-
-.git-info a:hover {
-  background: none;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text);
-}
-
-.tldr {
-  color: var(--text-secondary);
-}
-
-.tldr strong {
-  color: var(--text-secondary);
-}
-
-blockquote {
-  color: var(--text);
-}
-
-pre {
-  background: #1D1F21;
-}
-
-hr {
-  border-top-color: var(--border);
-}
-
-.divider-main::before {
-  border-top-color: var(--border);
-}
-
-.divider-main::after {
-  color: var(--accent);
-  background: var(--bg);
-}
-
-.divider-minor::before {
-  border-top-color: var(--border);
-}
-
-.divider-minor::after {
-  color: var(--border);
-  background: var(--bg);
-}
-
-footer {
-  color: var(--text-secondary);
-}
-
-table.posts th {
-  border-bottom-color: var(--border);
-}
-
-table.posts tr:hover td {
-  border-bottom-color: var(--border);
-}
-
-.callout {
-  border-left-color: var(--accent);
-}
-
-.sidenote {
-  color: var(--text-secondary);
-}
-
-.sidenote-toggle {
-  color: var(--accent);
-}
-
-.meta, time {
-  color: var(--text-secondary);
-}
-
-figcaption {
-  color: var(--text-secondary);
-}
-
-.status-draft {
-  color: #CC6666;
-}
-
-.grid-item {
-  background: #1D1F21;
-  border-color: var(--border);
-}
-
-.grid-item:hover {
-  box-shadow: 0 8px 16px rgba(201, 168, 106, 0.08);
-}
-
-.ticker {
-  background: #e8e8e8;
-  color: #1a1a1a;
-}
-
-.ticker-item a {
-  color: #1a1a1a;
-}
-
-.ticker-item a:hover {
-  background: rgba(0,0,0,0.1);
-}
-
-.ticker-item code {
-  color: #333;
-}
-
-.ticker-sep {
-  color: #666;
-}
-
-.feed-poster {
-  background: #1D1F21;
-  border-color: var(--border);
-}
-
-.feed-panel-poster img {
-  border-color: var(--border);
-}
-
-.heading-index a.active {
-  color: var(--accent);
-}
-
-.heading-index a:hover {
-  background: var(--selection);
-  color: var(--accent);
-}
-
-code {
-  background: #1D1F21;
+    --link: #9fb3ff;
+    --visited: #9fb3ff;
+    --text: #f5faff;
+    --text-secondary: #b8c3dd;
+    --bg: #0d1226;
+    --surface: #141b34;
+    --card-bg: #141b34;
+    --border: #8996b8;
+    --selection: #fff36d;
+    --selection-text: #0d1226;
+    --accent: #9fb3ff;
+    --danger: #ff9b9b;
+    --shadow: rgba(0, 0, 0, 0.42);
+    --overlay: rgba(5, 8, 18, 0.9);
+    --overlay-text: #f5faff;
+    --ticker-bg: #f5faff;
+    --ticker-text: #0d1226;
+    --ticker-hover: #fff36d;
+    --ticker-separator: rgba(13, 18, 38, 0.48);
 }
