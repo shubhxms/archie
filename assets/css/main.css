@@ -8,6 +8,7 @@
     --bg: #f5faff;
     --surface: #f5faff;
     --card-bg: #f5faff;
+    --callout-bg: #e9efff;
     --border: #000;
     --selection: #fff36d;
     --selection-text: #000;
@@ -667,21 +668,21 @@ table.posts td:first-child {
 .callout {
     display: grid;
     grid-template-columns: auto minmax(0, 1fr);
-    gap: 0.65rem;
+    gap: 0.75rem;
     margin: 0.85rem 0;
-    padding: 0.7rem 0.8rem;
-    border: 1px solid var(--text);
-    background: var(--selection);
-    box-shadow: 3px 3px 0 var(--accent);
-    color: var(--selection-text);
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    background: var(--callout-bg);
+    color: var(--text);
     font-family: "Space Mono", monospace;
-    font-size: 0.72rem;
+    font-size: 0.85rem;
     line-height: 1.5;
 }
 
 .callout::before {
     content: "*";
-    color: var(--selection-text);
+    color: var(--accent);
     font-weight: 700;
 }
 
