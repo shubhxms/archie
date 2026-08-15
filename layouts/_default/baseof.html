@@ -6,6 +6,7 @@
   <body class="{{ $layoutClass }}{{ $pageClass }}">
     {{- partial "ticker.html" . -}}
     <div class="page-shell">
+      {{- block "shell-header" . }}{{- end }}
       <div class="page-wrapper">
         <main class="main-content">
         <div class="content">

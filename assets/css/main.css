@@ -85,13 +85,16 @@ body.layout-wide {
 
 .content {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 4rem);
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
     hyphens: auto;
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
-    padding-bottom: 60px;
+    padding-bottom: 0;
 }
 
 .sidebar {
@@ -470,28 +473,17 @@ time,
 
 /* Footer */
 footer {
-    position: fixed;
-    left: var(--shell-left-padding);
-    bottom: 0;
-    width: var(--main-column-width);
     margin: 0;
-    padding: 0.28rem 0 0.38rem;
+    padding: 0.28rem 0 0;
     box-sizing: border-box;
-    background: var(--bg);
     color: var(--text-secondary);
     font-family: "Space Mono", monospace;
     font-size: 0.68rem;
     line-height: 1.2;
-    z-index: 90;
+}
 
 .footer-divider {
-    position: fixed;
-    left: var(--shell-left-padding);
-    bottom: 1.5rem;
-    width: var(--main-column-width);
-    margin: 0;
-    background: var(--bg);
-    z-index: 91;
+    margin: auto 0 0.3rem;
 }
 
 .footer-divider::before {
@@ -1598,7 +1590,7 @@ samp {
 .sidebar-nav {
     font-size: 12px;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.1;
 }
 
 /* Sidebar links are intentionally unadorned. */
@@ -1653,6 +1645,74 @@ samp {
     font-weight: 700;
 }
 
+/* Home masthead spans the reading column and visual rail. */
+.home-site-header {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    width: 100%;
+    text-align: center;
+}
+
+.home-site-header h1 {
+    margin: -0.18em 0 0.12em;
+    font-family: "Crimson Text", Georgia, serif;
+    font-size: clamp(4rem, 7.5vw, 7rem);
+    font-weight: 600;
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+}
+
+.home-site-header p {
+    margin: 0;
+    padding: 0.38rem 1rem 0.34rem;
+    border-top: 1px solid var(--text);
+    border-bottom: 1px solid var(--text);
+    font-family: "Urbanist", sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    text-align: center;
+}
+
+.page-home .page-wrapper {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.page-home .layout-side-rail {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.page-home .sidebar {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+}
+
+@media (max-width: 1199px) {
+    .home-site-header {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .page-home .page-wrapper {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .page-home .layout-side-rail {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .page-home .sidebar {
+        grid-column: 2;
+        grid-row: 1 / span 3;
+    }
+}
+
 /* Editorial home: compact catalogue in the main column, visual notes in the rail. */
 .home-editorial {
     font-family: "Crimson Text", Georgia, serif;
@@ -1674,20 +1734,6 @@ samp {
     min-width: 0;
 }
 
-.home-kicker {
-    margin: 0 0 0.18rem;
-    font-family: "Urbanist", sans-serif;
-    font-size: 0.68rem;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: 0.09em;
-}
-
-.home-editorial .home-masthead h1 {
-    margin: 0;
-    font-size: 2.15rem;
-    line-height: 0.98;
-}
 
 .home-deck {
     margin: 0.32rem 0 0;
@@ -1814,25 +1860,22 @@ samp {
         gap: 0.7rem;
     }
 
-    .home-editorial .home-masthead h1 {
-        font-size: 1.8rem;
+    .home-site-header {
+        margin-bottom: 1.2rem;
+    }
+
+    .home-site-header h1 {
+        font-size: 3.4rem;
+    }
+
+    .home-site-header p {
+        padding-inline: 0.3rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
     }
 
     .home-deck {
         font-size: 1rem;
     }
 
-    footer,
-    .footer-divider {
-        position: static;
-        width: 100%;
-    }
-
-    footer {
-        padding: 0;
-    }
-
-    .footer-divider {
-        margin: 0.6em 0 0.3em;
-    }
 }
