@@ -1,40 +1,35 @@
-/* ET Book — Tufte's typeface for body text. Self-hosted woff (Palatino system fallback). */
-@font-face {
-    font-family: "et-book";
-    src: url("/fonts/et-book/et-book-roman-line-figures.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: "et-book";
-    src: url("/fonts/et-book/et-book-display-italic-old-style-figures.woff")
-        format("woff");
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
-}
-@font-face {
-    font-family: "et-book";
-    src: url("/fonts/et-book/et-book-bold-line-figures.woff") format("woff");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-}
+/* Crimson Text for reading; Urbanist for structure and navigation. */
 
 :root {
-    --link: #3b6cc9;
-    --text: #202122;
-    --text-secondary: #54595d;
+    --link: #1827a3;
+    --visited: #1827a3;
+    --text: #000;
+    --text-secondary: #000;
     --bg: #fff;
-    --border: #a2a9b1;
-    --selection: #fff3a8;
-    --accent: #c9a86a;
+    --surface: #fff;
+    --card-bg: #fff;
+    --border: #000;
+    --selection: #fff36d;
+    --accent: #1827a3;
+    --danger: #000;
+    --shadow: rgba(0, 0, 0, 0.12);
+    --overlay: rgba(0, 0, 0, 0.86);
+    --overlay-text: #fff;
+    --ticker-bg: #000;
+    --ticker-text: #fff;
+    --ticker-hover: #fff36d;
+    --ticker-separator: #fff;
+    --side-rail-gap: 2rem;
+    --side-rail-width: clamp(18rem, 24vw, 26rem);
+    --sidebar-width: 10rem;
+    --main-column-width: 500px;
+    --shell-left-padding: 6%;
 }
 
 html {
-    font-family: "Source Serif 4", Georgia, serif;
+    font-family: "Crimson Text", Georgia, serif;
     font-weight: 400;
+    font-synthesis: weight;
     font-size: 14px;
     line-height: 1.4;
     color: var(--text);
@@ -50,28 +45,46 @@ body {
     max-width: 250vw;
 }
 
+body.layout-wide {
+    --main-column-width: 760px;
+}
+
 ::selection {
     background: var(--selection);
 }
 
-/* Patrick Collison layout: content slightly centered, nav fixed right */
-.page-wrapper {
-    display: block;
-    max-width: 100ch;
-    margin: 0 auto;
-    margin-left: 7%;
-    padding: 1.5rem 2rem;
-    padding-right: 180px;
-    padding-top: 40px;
+/* Three-lane desktop shell: main column, on-demand rail, navigation. */
+.page-shell {
+    display: grid;
+    grid-template-columns: minmax(0, var(--main-column-width)) minmax(18rem, 1fr) var(--sidebar-width);
+    gap: var(--side-rail-gap);
+    align-items: start;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 40px 2rem 1.5rem var(--shell-left-padding);
     min-height: 100vh;
     box-sizing: border-box;
 }
 
+.page-wrapper {
+    min-width: 0;
+    max-width: var(--main-column-width);
+}
 .main-content {
-    max-width: 100%;
+    min-width: 0;
+    max-width: var(--main-column-width);
+}
+
+.layout-side-rail {
+    position: relative;
+    align-self: stretch;
+    min-width: 0;
+    width: 100%;
 }
 
 .content {
+    position: relative;
     max-width: 100%;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -81,12 +94,12 @@ body {
     padding-bottom: 60px;
 }
 
-/* Sidebar fixed to right */
 .sidebar {
-    position: fixed;
+    position: sticky;
     top: 40px;
-    right: 30px;
-    bottom: 32px;
+    align-self: start;
+    width: var(--sidebar-width);
+    max-height: calc(100vh - 72px);
     text-align: right;
     font-family: "Space Mono", monospace;
     font-weight: 500;
@@ -204,7 +217,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: et-book, Palatino, Georgia, serif;
+    font-family: "Urbanist", sans-serif;
     font-weight: 700;
     color: var(--text);
     margin: 0.8em 0 0.15em 0;
@@ -213,8 +226,9 @@ h6 {
 }
 
 h1 {
+    font-family: "Urbanist", sans-serif;
     font-size: 2.8rem;
-    font-weight: 900;
+    font-weight: 400;
     letter-spacing: 0em;
 }
 h2 {
@@ -230,8 +244,9 @@ h6 {
 }
 
 .title h1 {
+    font-family: "Urbanist", sans-serif;
     font-size: 3rem;
-    font-weight: 900;
+    font-weight: 400;
     margin-top: 0;
     margin-bottom: 0.15em;
     letter-spacing: 0em;
@@ -254,16 +269,17 @@ h6 {
 a {
     color: var(--link);
     text-decoration: underline;
-    text-decoration-style: dotted;
+    text-decoration-style: solid;
     text-underline-offset: 2px;
 }
 
 a:visited {
-    color: #6b5b95;
+    color: var(--visited);
 }
 
 a:hover {
     background: var(--selection);
+    color: var(--text);
     text-decoration: none;
 }
 
@@ -274,10 +290,7 @@ a:hover {
     line-height: 0.75;
     margin-right: 0.08em;
     margin-top: -0.15em;
-    font-family:
-        "DM Sans",
-        -apple-system,
-        sans-serif;
+    font-family: "Crimson Text", Georgia, serif;
 }
 
 p {
@@ -333,7 +346,7 @@ hr {
     background: var(--bg);
     padding: 0 0.6em;
     font-size: 0.7rem;
-    color: var(--text-secondary);
+    color: var(--accent);
     line-height: 1;
 }
 
@@ -397,7 +410,7 @@ img {
     max-height: 200px;
     overflow: hidden;
     padding: 0;
-    margin: 0;
+    margin: 0 0 0.65rem;
 }
 
 .hero-img img {
@@ -433,7 +446,7 @@ code {
 
 pre {
     font-family: "Space Mono", monospace;
-    background: #fafafa;
+    background: var(--surface);
     padding: 0.6em 0.8em;
     overflow-x: auto;
     font-size: 0.8em;
@@ -512,7 +525,7 @@ table.posts td:first-child {
 }
 
 .status-draft {
-    color: #d33;
+    color: var(--danger);
     font-weight: 600;
 }
 
@@ -526,7 +539,7 @@ table.posts td:first-child {
     background: none;
     padding: 0.7em 0 0.7em 0.8em;
     border: none;
-    border-left: 2px solid var(--border);
+    border-left: 2px solid var(--accent);
     color: var(--text-secondary);
     font-size: 0.9rem;
 }
@@ -554,14 +567,17 @@ table.posts td:first-child {
     display: none;
 }
 
-.sidenote {
+.sidenote-inline {
+    display: none;
+}
+
+.layout-side-rail .sidenote {
     display: block;
-    float: right;
-    clear: right;
-    width: 36%;
-    margin-right: -44%;
-    margin-bottom: 0;
+    width: var(--side-rail-width);
+    max-width: 100%;
+    margin: 1.5rem 0;
     padding-left: 0.8em;
+    border-left: 1px solid var(--border);
     font-size: 0.8rem;
     line-height: 1.35;
     color: var(--text-secondary);
@@ -588,7 +604,7 @@ svg {
     aspect-ratio: 2/3;
     overflow: hidden;
     border: 1px solid var(--border);
-    background: #f8f9fa;
+    background: var(--surface);
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
@@ -597,7 +613,7 @@ svg {
 
 .grid-item:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 16px var(--shadow);
 }
 
 .grid-item img {
@@ -614,8 +630,8 @@ svg {
     left: 0;
     right: 0;
     padding: 0.6rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
-    color: #fff;
+    background: linear-gradient(to top, var(--overlay), transparent);
+    color: var(--overlay-text);
     font-size: 0.75rem;
     line-height: 1.3;
     opacity: 0;
@@ -669,7 +685,7 @@ svg {
     aspect-ratio: 2/3;
     overflow: hidden;
     border: 1px solid var(--border);
-    background: #f8f9fa;
+    background: var(--surface);
     transition: border-color 0.15s ease;
 }
 
@@ -903,8 +919,8 @@ svg {
 }
 
 .tl-year {
-    font-family: et-book, Palatino, Georgia, serif;
-    font-weight: 600;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 700;
     font-size: 1.3em;
     color: var(--text);
     margin: 0 0 0.6em;
@@ -963,8 +979,8 @@ svg {
 }
 
 .tl-title {
-    font-family: et-book, Palatino, Georgia, serif;
-    font-weight: 600;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 700;
     font-size: 0.95em;
 }
 
@@ -1040,8 +1056,55 @@ svg {
     font-style: italic;
 }
 
+.rail-anchor {
+    display: inline-block;
+    width: 0;
+    height: 0;
+}
+/* Optional Markdown side rail: {{< side-rail >}}…{{< /side-rail >}} */
+.side-rail {
+    width: var(--side-rail-width);
+    max-width: 100%;
+    margin: 1.5rem 0;
+    padding: 0.2rem 0 0.2rem 1rem;
+    border-left: 1px solid var(--border);
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.side-rail > :first-child {
+    margin-top: 0;
+}
+
+.side-rail > :last-child {
+    margin-bottom: 0;
+}
+
+
+
+@media (max-width: 1199px) {
+    .page-shell {
+        grid-template-columns: minmax(0, 1fr) var(--sidebar-width);
+        max-width: none;
+    }
+
+    .layout-side-rail {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .sidebar {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+}
+
 /* Responsive */
 @media (max-width: 900px) {
+    :root {
+        --shell-left-padding: 60px;
+    }
     img,
     figure img {
         max-width: 100%;
@@ -1051,7 +1114,7 @@ svg {
         right: 30px;
     }
 
-    .page-wrapper {
+    .page-shell {
         padding-left: 60px;
         padding-right: 20px;
     }
@@ -1067,7 +1130,8 @@ svg {
         display: none !important;
     }
 
-    .page-wrapper {
+    .page-shell {
+        display: block;
         width: 100%;
         margin: 0;
         margin-left: 0;
@@ -1086,6 +1150,8 @@ svg {
 
     .sidebar {
         position: static;
+        width: auto;
+        max-height: none;
         text-align: left;
         margin-bottom: 16px;
         flex-direction: column;
@@ -1168,17 +1234,24 @@ svg {
         display: none;
     }
 
-    .sidenote {
-        float: none;
+    .layout-side-rail .sidenote {
+        display: none;
+    }
+
+    .sidenote-inline {
         width: 100%;
         margin-right: 0;
         display: none;
         padding: 0.5em 0 0.5em 0.8em;
         border-left: 2px solid var(--border);
+        color: var(--text-secondary);
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 0.8rem;
+        line-height: 1.35;
         user-select: text;
     }
 
-    .sidenote-state:checked + .sidenote {
+    .sidenote-state:checked + .sidenote-inline {
         display: block;
     }
 
@@ -1230,7 +1303,7 @@ svg {
 }
 
 @media (max-width: 500px) {
-    .page-wrapper {
+    .page-shell {
         padding: 12px;
     }
 
@@ -1249,10 +1322,10 @@ svg {
 .heading-index {
     position: fixed;
     bottom: 0;
-    left: 7%;
+    left: 0;
     right: 0;
     background: var(--bg);
-    padding: 6px 16px;
+    padding: 6px 16px 6px var(--shell-left-padding);
     font-size: 11px;
     font-family: "Space Mono", monospace;
     z-index: 100;
@@ -1328,13 +1401,13 @@ h3:hover .heading-anchor {
     left: 0;
     right: 0;
     overflow: hidden;
-    background: var(--text);
+    background: var(--ticker-bg);
     padding: 8px 0;
     font-family: "Space Mono", monospace;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: var(--bg);
+    color: var(--ticker-text);
     z-index: 101;
     transform: translateY(0);
     transition: transform 0.3s ease;
@@ -1357,24 +1430,24 @@ h3:hover .heading-anchor {
 }
 
 .ticker-item a {
-    color: var(--bg);
+    color: var(--ticker-text);
     text-decoration: underline;
     text-underline-offset: 2px;
 }
 
 .ticker-item a:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--ticker-hover);
     text-decoration: none;
 }
 
 .ticker-item code {
     background: none;
-    color: var(--bg);
+    color: var(--ticker-text);
     font-size: inherit;
 }
 
 .ticker-sep {
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--ticker-separator);
     padding: 0 4px;
 }
 
@@ -1385,4 +1458,168 @@ h3:hover .heading-anchor {
     100% {
         transform: translateX(-50%);
     }
+}
+
+/* Crimson Text for reading; Urbanist for headings and navigation. */
+body,
+body *:not(pre):not(pre *):not(code):not(code *):not(kbd):not(kbd *):not(samp):not(samp *):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(.sidebar):not(.sidebar *):not(.heading-index):not(.heading-index *) {
+    font-family: "Crimson Text", Georgia, serif;
+}
+
+pre,
+code,
+kbd,
+samp {
+    font-family: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+/* Dense editorial rhythm */
+html {
+    font-size: 16px;
+    line-height: 1.35;
+    letter-spacing: 0;
+}
+
+p {
+    margin: 0.35em 0;
+    line-height: 1.35;
+    text-align: left;
+}
+
+ul,
+ol {
+    margin: 0.25em 0;
+    padding-left: 1.35rem;
+}
+
+li {
+    margin: 0.08em 0;
+    line-height: 1.3;
+}
+
+li > ul,
+li > ol {
+    margin: 0.1em 0 0.18em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title h1 {
+    font-family: "Urbanist", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.02;
+    letter-spacing: 0;
+    margin: 0 0 0.25em;
+}
+
+h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.08;
+    margin: 0.85em 0 0.18em;
+}
+
+h3 {
+    font-size: 1.08rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0.7em 0 0.15em;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.12;
+    margin: 0.6em 0 0.12em;
+}
+
+.tldr {
+    margin: 0.2em 0 0.55em;
+    font-size: 0.88rem;
+    line-height: 1.35;
+}
+
+hr {
+    margin: 0.45rem 0;
+}
+
+blockquote {
+    margin: 0.65em 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+table {
+    font-size: 0.9rem;
+    line-height: 1.35;
+}
+
+pre,
+code,
+kbd,
+samp {
+    font-size: 0.88em;
+    line-height: 1.35;
+}
+
+.sidebar,
+.sidebar * {
+    font-family: "Space Mono", monospace;
+}
+
+.sidebar {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.sidebar-nav {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+/* Sidebar links are intentionally unadorned. */
+.sidebar-nav a {
+    text-decoration: none;
+}
+
+@media (min-width: 801px) {
+    .sidebar-nav a {
+        display: block;
+        width: 100%;
+        max-width: var(--sidebar-width);
+        margin-left: auto;
+        box-sizing: border-box;
+    }
+}
+
+.sidebar-nav .site-title {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.sidebar-nav .site-title-gu,
+.git-info {
+    font-size: 10px;
+}
+
+.side-rail {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.heading-index {
+    font-family: "Urbanist", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.4;
 }
