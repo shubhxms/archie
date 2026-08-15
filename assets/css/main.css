@@ -44,6 +44,11 @@ body {
     background: var(--bg);
     overflow-x: clip;
     max-width: 250vw;
+    cursor: crosshair;
+}
+
+:is(a[href], button, [role="button"]) {
+    cursor: pointer;
 }
 
 body.layout-reading {
@@ -386,6 +391,30 @@ ol {
 
 li {
     margin: 0.1em 0;
+}
+
+:is(.content, .layout-side-rail) ul {
+    list-style: none;
+}
+
+:is(.content, .layout-side-rail) ul > li {
+    position: relative;
+}
+
+:is(.content, .layout-side-rail) ul > li::before {
+    content: "*";
+    position: absolute;
+    left: -1.15em;
+    color: var(--accent);
+    font-family: "Space Mono", monospace;
+}
+
+:is(.content, .layout-side-rail) ul ul > li::before {
+    content: "+";
+}
+
+:is(.content, .layout-side-rail) ul ul ul > li::before {
+    content: "-";
 }
 
 blockquote {
