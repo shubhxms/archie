@@ -5,12 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Only look for headings in the article body, not listings
   const body = content.querySelector('.body') || content;
-  const headings = body.querySelectorAll('h2, h3');
+  const headings = Array.from(body.querySelectorAll('h2, h3'));
+  if (document.body.classList.contains('page-home')) {
+    headings.push(...document.querySelectorAll('.layout-side-rail h2, .layout-side-rail h3'));
+  }
   if (headings.length === 0) {
     indexContainer.style.display = 'none';
     return;
   }
 
+  indexContainer.tabIndex = 0;
+  indexContainer.setAttribute('role', 'button');
+  indexContainer.setAttribute('aria-label', 'Open section navigation');
+  indexContainer.setAttribute('aria-expanded', 'false');
   // Build index
   const inner = document.createElement('div');
   inner.className = 'heading-index-inner';
@@ -43,13 +50,43 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Handle clicks on index links - immediately highlight
+  function openIndex() {
+    indexContainer.classList.add('is-open');
+    indexContainer.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeIndex() {
+    indexContainer.classList.remove('is-open');
+    indexContainer.setAttribute('aria-expanded', 'false');
+  }
+
   indexContainer.addEventListener('click', function(e) {
-    if (e.target.tagName === 'A') {
-      setActive(e.target.getAttribute('href'));
+    if (!indexContainer.classList.contains('is-open')) {
+      e.preventDefault();
+      openIndex();
+      return;
+    }
+
+    const link = e.target.closest('a');
+    if (link) {
+      setActive(link.getAttribute('href'));
+      closeIndex();
     }
   });
 
+  indexContainer.addEventListener('keydown', function(e) {
+    if ((e.key === 'Enter' || e.key === ' ') && !indexContainer.classList.contains('is-open')) {
+      e.preventDefault();
+      openIndex();
+    } else if (e.key === 'Escape') {
+      closeIndex();
+      indexContainer.focus();
+    }
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!indexContainer.contains(e.target)) closeIndex();
+  });
   // Track which heading is currently most visible via scroll
   let scrollTimeout;
   const observer = new IntersectionObserver((entries) => {

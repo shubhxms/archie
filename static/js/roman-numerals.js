@@ -16,8 +16,15 @@
     const content = document.querySelector('.content') || document.querySelector('.main-content') || document.body;
     if (!content) return;
 
+    const scopes = [content];
+    if (document.body.classList.contains('page-home')) {
+      const rail = document.querySelector('.layout-side-rail');
+      if (rail) scopes.push(rail);
+    }
+
+    const headingsInScopes = selector => scopes.flatMap(scope => Array.from(scope.querySelectorAll(selector)));
     // Number h2s independently
-    const h2s = content.querySelectorAll('h2');
+    const h2s = headingsInScopes('h2');
     h2s.forEach((h2, index) => {
       const existingSpan = h2.querySelector('.roman-numeral');
       if (existingSpan) return;
@@ -29,7 +36,7 @@
     });
 
     // Number h3s independently
-    const h3s = content.querySelectorAll('h3');
+    const h3s = headingsInScopes('h3');
     h3s.forEach((h3, index) => {
       const existingSpan = h3.querySelector('.roman-numeral');
       if (existingSpan) return;
