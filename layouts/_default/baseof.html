@@ -25,7 +25,8 @@
         {{- block "rail" . }}{{- end }}
       </aside>
       {{- with (.Store.Get "sidenotes") }}
-      <section class="page-footnotes" aria-label="Footnotes">
+      <section class="page-footnotes" aria-labelledby="footnotes-title">
+        <h2 class="footnotes-title" id="footnotes-title">Footnotes</h2>
         <ol>
           {{- range . }}
           <li id="sn-{{ .ordinal }}-footnote">{{ .content }} <a class="footnote-backref" href="#sn-{{ .ordinal }}-footnote-ref" aria-label="Back to reference {{ .number }}">↩</a></li>

@@ -115,6 +115,7 @@ body.layout-wide {
 
 .page-single .page-shell {
     grid-template-rows: auto minmax(0, 1fr) auto auto;
+    row-gap: 0;
 }
 
 .page-single .page-content-header {
@@ -122,6 +123,10 @@ body.layout-wide {
     grid-row: 1;
     width: var(--main-column-width);
     max-width: 100%;
+}
+
+.page-content-header .divider-main {
+    margin-bottom: 0;
 }
 
 .page-single .page-shell:has(.side-rail) .page-content-header {
@@ -644,7 +649,18 @@ table.posts td:first-child {
     color: var(--text-secondary);
 }
 
+.footnotes-title {
+    margin: 0.35rem 0 0.25rem;
+    font-family: "Urbanist", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.035em;
+}
+
 .page-footnotes ol {
+    max-width: var(--main-column-width);
     margin-top: 0.5rem;
 }
 
@@ -659,7 +675,8 @@ table.posts td:first-child {
 
 .page-shell:has(.side-rail) .page-footnotes {
     display: block;
-}
+    grid-column: 1 / span 2;
+    width: 100%;
 
 .page-shell:has(.side-rail) .layout-side-rail .sidenote {
     display: none;
@@ -1191,8 +1208,12 @@ svg {
         border-left: 0;
     }
 
-    .page-footnotes {
+    .page-footnotes,
+    .page-shell:has(.side-rail) .page-footnotes {
+        grid-column: 1;
         grid-row: 3;
+        width: var(--main-column-width);
+        max-width: 100%;
     }
 
     .shell-footer {
@@ -1913,8 +1934,12 @@ samp {
         border-left: 0;
     }
 
-    .page-home .page-footnotes {
+    .page-home .page-footnotes,
+    .page-home .page-shell:has(.side-rail) .page-footnotes {
+        grid-column: 1;
         grid-row: 4;
+        width: var(--main-column-width);
+        max-width: 100%;
     }
 
     .home-shell-footer {
