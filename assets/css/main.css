@@ -492,6 +492,15 @@ img {
     margin: 0 0 0.65rem;
 }
 
+.hero-img:has(+ iframe) {
+    margin-bottom: 0;
+}
+
+.hero-img + iframe {
+    display: block;
+    margin: 0;
+}
+
 .hero-img img {
     width: 100%;
     height: 200px;
