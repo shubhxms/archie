@@ -14,15 +14,6 @@
           <nav class="heading-index" id="heading-index"></nav>
         </div>
         </main>
-        {{- with (.Store.Get "sidenotes") }}
-        <section class="page-footnotes" aria-label="Footnotes">
-          <ol>
-            {{- range . }}
-            <li id="sn-{{ .ordinal }}-footnote">{{ .content }} <a class="footnote-backref" href="#sn-{{ .ordinal }}-footnote-ref" aria-label="Back to reference {{ .number }}">↩</a></li>
-            {{- end }}
-          </ol>
-        </section>
-        {{- end }}
       </div>
       <aside class="layout-side-rail" aria-label="Page side rail">
         {{- range (.Store.Get "sideRail") }}
@@ -33,6 +24,15 @@
         {{- end }}
         {{- block "rail" . }}{{- end }}
       </aside>
+      {{- with (.Store.Get "sidenotes") }}
+      <section class="page-footnotes" aria-label="Footnotes">
+        <ol>
+          {{- range . }}
+          <li id="sn-{{ .ordinal }}-footnote">{{ .content }} <a class="footnote-backref" href="#sn-{{ .ordinal }}-footnote-ref" aria-label="Back to reference {{ .number }}">↩</a></li>
+          {{- end }}
+        </ol>
+      </section>
+      {{- end }}
       <div class="shell-footer{{ if .IsHome }} home-shell-footer{{ end }}">
         {{- partial "footer.html" . -}}
       </div>
