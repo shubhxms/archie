@@ -1708,7 +1708,8 @@ samp {
 }
 
 .home-section h2,
-.layout-side-rail .side-rail > h2 {
+.layout-side-rail .side-rail > h2,
+.home-rail-shelf h2 {
     margin: 0 0 0.28rem;
     padding-bottom: 0.12rem;
     border-bottom: 1px solid var(--text);
@@ -1724,79 +1725,6 @@ samp {
     margin: 0.25rem 0;
 }
 
-.home-link-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.home-link-list li {
-    margin: 0 0 0.42rem;
-    line-height: 1.2;
-}
-
-.home-link-list strong {
-    display: block;
-    font-family: "Urbanist", sans-serif;
-    font-size: 0.94rem;
-    font-weight: 700;
-    line-height: 1.15;
-}
-
-.home-link-list span {
-    display: block;
-    margin-top: 0.08rem;
-    line-height: 1.25;
-}
-
-.home-starter-pack {
-    margin-bottom: 0.8rem;
-}
-
-.home-starter-pack h2 {
-    margin: 0 0 0.28rem;
-    padding-bottom: 0.12rem;
-    border-bottom: 1px solid var(--text);
-    font-family: "Urbanist", sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.1;
-    text-transform: uppercase;
-    letter-spacing: 0.035em;
-}
-
-.home-starter-links {
-    display: block;
-}
-
-.home-permanent-links {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.28rem 0.5rem;
-}
-
-.home-starter-links li,
-.home-permanent-links li {
-    margin: 0;
-}
-
-.home-starter-links a,
-.home-permanent-links a {
-    display: block;
-    width: 100%;
-    padding: 0.12rem 0.2rem;
-    box-sizing: border-box;
-}
-
-.home-starter-links a strong,
-.home-permanent-links a strong {
-    display: inline;
-}
-
-.home-starter-links a:hover,
-.home-permanent-links a:hover {
-    background: var(--selection);
-}
 
 .home-index {
     line-height: 1.28;
@@ -1807,13 +1735,21 @@ samp {
 }
 
 .page-home .layout-side-rail .side-rail {
-    margin: 0 0 0.8rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
     padding-top: 0;
     padding-bottom: 0;
+    box-sizing: border-box;
 }
 
 .page-home .layout-side-rail .side-rail > h2 {
     margin: 0.8rem 0 0.28rem;
+}
+
+.page-home .layout-side-rail .side-rail > h2:first-child {
+    margin-top: 0;
 }
 
 .home-rail-feature {
@@ -1834,6 +1770,15 @@ samp {
     font-size: 0.72rem;
     font-style: italic;
     line-height: 1.2;
+}
+
+.home-rail-shelf {
+    margin-top: auto;
+    padding-top: 0.8rem;
+}
+
+.home-rail-shelf h2 {
+    margin: 0 0 0.28rem;
 }
 
 .home-shelf-grid {
@@ -1863,10 +1808,5 @@ samp {
 
     .home-deck {
         font-size: 1rem;
-    }
-
-    .home-permanent-links {
-        grid-template-columns: 1fr;
-        gap: 0.42rem;
     }
 }
