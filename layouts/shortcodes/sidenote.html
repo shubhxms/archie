@@ -1,7 +1,4 @@
 {{- $content := .Inner | .Page.RenderString -}}
-{{- .Page.Store.Add "sidenotes" (slice (dict "ordinal" .Ordinal "content" $content)) -}}
-<span class="sidenote-outer" id="sn-{{ .Ordinal }}-anchor">
-  <label class="sidenote-toggle" for="sn-{{ .Ordinal }}"></label>
-  <input class="sidenote-state" id="sn-{{ .Ordinal }}" type="checkbox">
-  <span class="sidenote-inline">{{ $content }}</span>
-</span>
+{{- $number := add (len (default (slice) (.Page.Store.Get "sidenotes"))) 1 -}}
+{{- .Page.Store.Add "sidenotes" (slice (dict "ordinal" .Ordinal "number" $number "content" $content)) -}}
+<sup class="sidenote-ref sidenote-ref-rail" id="sn-{{ .Ordinal }}-rail-ref"><a href="#sn-{{ .Ordinal }}-rail" aria-label="Sidenote {{ $number }}">{{ $number }}</a></sup><sup class="sidenote-ref sidenote-ref-footnote" id="sn-{{ .Ordinal }}-footnote-ref"><a href="#sn-{{ .Ordinal }}-footnote" aria-label="Footnote {{ $number }}">{{ $number }}</a></sup>

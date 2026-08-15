@@ -46,6 +46,10 @@ body {
     max-width: 250vw;
 }
 
+body.layout-reading {
+    --side-rail-width: var(--main-column-width);
+}
+
 body.layout-wide {
     --main-column-width: 760px;
 }
@@ -123,6 +127,10 @@ body.layout-wide {
 
 .page-single .sidebar {
     grid-row: 1 / span 3;
+}
+
+.page-single .content {
+    min-height: 0;
 }
 
 .content {
@@ -593,30 +601,50 @@ table.posts td:first-child {
     font-size: 0.9rem;
 }
 
-/* Sidenotes */
-.sidenote-outer {
-    user-select: none;
-}
-
-.sidenote-toggle {
-    cursor: pointer;
-    vertical-align: super;
-    font-size: 0.75rem;
+/* Sidenotes become linked footnotes when the rail is occupied or stacked. */
+.sidenote-ref {
+    font-family: "Space Mono", monospace;
+    font-size: 0.65em;
     line-height: 1;
-    color: var(--link);
-    user-select: none;
+    vertical-align: super;
 }
 
-.sidenote-toggle::after {
-    content: "¶";
-    color: var(--accent);
+.sidenote-ref a,
+.sidenote-backref,
+.footnote-backref {
+    text-decoration: none;
 }
 
-.sidenote-state {
+.sidenote-ref-footnote,
+.page-footnotes {
     display: none;
 }
 
-.sidenote-inline {
+.page-footnotes {
+    margin-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.page-footnotes ol {
+    margin-top: 0.5rem;
+}
+
+.page-shell:has(.side-rail) .sidenote-ref-rail {
+    display: none;
+}
+
+.page-shell:has(.side-rail) .sidenote-ref-footnote,
+.page-shell:has(.side-rail) .page-footnotes {
+    display: inline;
+}
+
+.page-shell:has(.side-rail) .page-footnotes {
+    display: block;
+}
+
+.page-shell:has(.side-rail) .layout-side-rail .sidenote {
     display: none;
 }
 
@@ -1175,6 +1203,23 @@ svg {
         grid-row: 4;
     }
 
+    .sidenote-ref-rail {
+        display: none;
+    }
+
+    .sidenote-ref-footnote,
+    .page-footnotes {
+        display: inline;
+    }
+
+    .page-footnotes {
+        display: block;
+    }
+
+    .layout-side-rail .sidenote {
+        display: none;
+    }
+
     .sidebar {
         grid-column: 2;
         grid-row: 1 / span 3;
@@ -1319,26 +1364,6 @@ svg {
         display: none;
     }
 
-    .layout-side-rail .sidenote {
-        display: none;
-    }
-
-    .sidenote-inline {
-        width: 100%;
-        margin-right: 0;
-        display: none;
-        padding: 0.5em 0 0.5em 0.8em;
-        border-left: 2px solid var(--border);
-        color: var(--text-secondary);
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 0.8rem;
-        line-height: 1.35;
-        user-select: text;
-    }
-
-    .sidenote-state:checked + .sidenote-inline {
-        display: block;
-    }
 
     .feed-grid {
         grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));

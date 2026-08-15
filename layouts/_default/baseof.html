@@ -14,13 +14,22 @@
           <nav class="heading-index" id="heading-index"></nav>
         </div>
         </main>
+        {{- with (.Store.Get "sidenotes") }}
+        <section class="page-footnotes" aria-label="Footnotes">
+          <ol>
+            {{- range . }}
+            <li id="sn-{{ .ordinal }}-footnote">{{ .content }} <a class="footnote-backref" href="#sn-{{ .ordinal }}-footnote-ref" aria-label="Back to reference {{ .number }}">↩</a></li>
+            {{- end }}
+          </ol>
+        </section>
+        {{- end }}
       </div>
       <aside class="layout-side-rail" aria-label="Page side rail">
         {{- range (.Store.Get "sideRail") }}
         <section class="side-rail">{{ .content }}</section>
         {{- end }}
         {{- range (.Store.Get "sidenotes") }}
-        <aside class="sidenote" id="sn-{{ .ordinal }}-rail">{{ .content }}</aside>
+        <aside class="sidenote" id="sn-{{ .ordinal }}-rail">{{ .content }} <a class="sidenote-backref" href="#sn-{{ .ordinal }}-rail-ref" aria-label="Back to reference {{ .number }}">↩</a></aside>
         {{- end }}
         {{- block "rail" . }}{{- end }}
       </aside>
