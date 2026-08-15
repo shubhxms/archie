@@ -51,6 +51,7 @@ body {
     cursor: pointer;
 }
 
+.mobile-menu,
 .mobile-nav {
     display: none;
 }
@@ -1360,16 +1361,66 @@ svg {
         box-sizing: border-box;
     }
 
+    .mobile-menu {
+        display: block;
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        z-index: 100;
+    }
+
+    .mobile-menu summary {
+        display: grid;
+        place-items: center;
+        min-width: 3rem;
+        height: 3rem;
+        padding: 0 0.65rem;
+        border: 1px solid var(--text);
+        background: var(--bg);
+        color: var(--text);
+        box-shadow: 3px 3px 0 var(--selection);
+        font-family: "Space Mono", monospace;
+        font-size: 0.7rem;
+        font-weight: 700;
+        line-height: 1;
+        text-transform: uppercase;
+        cursor: pointer;
+        list-style: none;
+        box-sizing: border-box;
+    }
+
+    .mobile-menu summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .mobile-menu[open] summary {
+        color: var(--accent);
+    }
+
+    .mobile-menu:not([open]) .mobile-nav {
+        display: none;
+    }
+
     .mobile-nav {
+        position: absolute;
+        right: 0;
+        bottom: calc(100% + 0.65rem);
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         align-items: center;
-        gap: 0.2rem 0;
-        width: 100%;
-        margin-bottom: 1rem;
+        width: max-content;
+        max-width: calc(100vw - 2rem);
+        margin: 0;
+        padding: 0.7rem 0.8rem;
+        overflow-x: auto;
+        border: 1px solid var(--text);
+        background: var(--bg);
+        box-shadow: 3px 3px 0 var(--selection);
         font-family: "Space Mono", monospace;
         font-size: 0.72rem;
         line-height: 1.4;
+        box-sizing: border-box;
+        scrollbar-width: thin;
     }
 
     .mobile-nav a {

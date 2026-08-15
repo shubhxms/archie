@@ -6,13 +6,15 @@
   <body class="{{ $layoutClass }}{{ $pageClass }}">
     {{- partial "ticker.html" . -}}
     <div class="page-shell">
-      <nav class="mobile-nav" aria-label="Primary navigation">
-        <a href="{{ .Site.Home.RelPermalink }}"{{ if .IsHome }} class="active-page"{{ end }}>Home</a>
+      <details class="mobile-menu">
+        <summary aria-label="Toggle navigation">Menu</summary>
+        <nav class="mobile-nav" aria-label="Primary navigation">
         {{- $mobileCurrent := .RelPermalink }}
         {{- range .Site.Menus.main }}
         <a href="{{ .URL }}"{{ if or (eq $mobileCurrent .URL) (eq (strings.TrimSuffix "/" $mobileCurrent) (strings.TrimSuffix "/" .URL)) }} class="active-page"{{ end }}>{{ .Name }}</a>
         {{- end }}
-      </nav>
+        </nav>
+      </details>
       {{- block "shell-header" . }}{{- end }}
       <div class="page-wrapper">
         <main class="main-content">
