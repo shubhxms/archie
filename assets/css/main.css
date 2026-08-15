@@ -51,6 +51,10 @@ body {
     cursor: pointer;
 }
 
+.mobile-nav {
+    display: none;
+}
+
 body.layout-reading {
     --side-rail-width: var(--main-column-width);
 }
@@ -1354,6 +1358,40 @@ svg {
         max-width: none;
         min-height: auto;
         box-sizing: border-box;
+    }
+
+    .mobile-nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.2rem 0;
+        width: 100%;
+        margin-bottom: 1rem;
+        font-family: "Space Mono", monospace;
+        font-size: 0.72rem;
+        line-height: 1.4;
+    }
+
+    .mobile-nav a {
+        color: var(--text);
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .mobile-nav a.active-page {
+        color: var(--accent);
+        font-weight: 700;
+    }
+
+    .mobile-nav a + a::before {
+        content: "·";
+        margin: 0 0.45rem;
+        color: var(--text-secondary);
+    }
+
+    .shell-footer,
+    .sidebar {
+        display: none;
     }
 
     .main-content,
