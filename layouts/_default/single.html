@@ -1,17 +1,21 @@
+{{ define "shell-header" }}
+<header class="page-content-header">
+	<div class="title">
+		<h1 class="title">{{ .Title }}</h1>
+	</div>
+	{{ if isset .Params "tldr" }}
+	<div class="tldr">
+		{{ .Params.tldr | markdownify }}
+	</div>
+	{{ end }}
+	<hr class="divider-main">
+</header>
+{{ end }}
+
 {{ define "main" }}
-<main>
-	<article>
-		<div class="title">
-			<h1 class="title">{{ .Title }}</h1>
-		</div>
-		{{ if isset .Params "tldr" }}
-		<div class="tldr">
-			{{ .Params.tldr | markdownify }}
-		</div>{{ end }}
-		<hr class="divider-main">
-		<section class="body">
-			{{ .Content }}
-		</section>
-	</article>
-</main>
+<article>
+	<section class="body">
+		{{ .Content }}
+	</section>
+</article>
 {{ end }}

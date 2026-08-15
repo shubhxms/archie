@@ -22,7 +22,6 @@
     --ticker-separator: #fff;
     --side-rail-gap: 2rem;
     --side-rail-width: clamp(22rem, 30vw, 30rem);
-    --side-rail-left-space: clamp(0.75rem, 1.5vw, 1.25rem);
     --sidebar-width: 10rem;
     --main-column-width: 500px;
     --shell-left-padding: 6%;
@@ -58,7 +57,7 @@ body.layout-wide {
 /* Two content columns plus independent navigation. */
 .page-shell {
     display: grid;
-    grid-template-columns: minmax(0, var(--main-column-width)) minmax(0, calc(var(--side-rail-width) + var(--side-rail-left-space))) minmax(0, 1fr) var(--sidebar-width);
+    grid-template-columns: minmax(0, var(--main-column-width)) minmax(0, var(--side-rail-width)) minmax(0, 1fr) var(--sidebar-width);
     grid-template-rows: minmax(0, 1fr) auto;
     gap: var(--side-rail-gap);
     align-items: start;
@@ -88,7 +87,6 @@ body.layout-wide {
     align-self: stretch;
     min-width: 0;
     width: 100%;
-    padding-left: var(--side-rail-left-space);
     box-sizing: border-box;
 }
 
@@ -102,6 +100,29 @@ body.layout-wide {
     grid-row: 2;
     align-self: end;
     width: 100%;
+}
+
+.page-single .page-shell {
+    grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.page-single .page-content-header {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    width: 100%;
+}
+
+.page-single .page-wrapper,
+.page-single .layout-side-rail {
+    grid-row: 2;
+}
+
+.page-single .shell-footer {
+    grid-row: 3;
+}
+
+.page-single .sidebar {
+    grid-row: 1 / span 3;
 }
 
 .content {
@@ -1088,6 +1109,7 @@ svg {
 .side-rail {
     width: var(--side-rail-width);
     max-width: 100%;
+    box-sizing: border-box;
     margin: 0 0 1.5rem;
     padding: 0.2rem 0 0.2rem 1rem;
     border-left: 1px solid var(--border);
@@ -1131,9 +1153,35 @@ svg {
         max-width: 100%;
     }
 
+    .page-single .page-shell {
+        grid-template-rows: auto auto auto auto;
+    }
+
+    .page-single .page-content-header {
+        grid-column: 1;
+        width: var(--main-column-width);
+        max-width: 100%;
+    }
+
+    .page-single .page-wrapper {
+        grid-row: 2;
+    }
+
+    .page-single .layout-side-rail {
+        grid-row: 3;
+    }
+
+    .page-single .shell-footer {
+        grid-row: 4;
+    }
+
     .sidebar {
         grid-column: 2;
         grid-row: 1 / span 3;
+    }
+
+    .page-single .sidebar {
+        grid-row: 1 / span 4;
     }
 }
 
