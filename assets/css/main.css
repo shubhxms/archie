@@ -1378,14 +1378,12 @@ svg {
     font-size: 0;
 }
 
-.heading-index a.active {
-    width: 1.4rem;
-    background: var(--selection);
-}
-
+.heading-index a.active,
 .heading-index a:hover {
     width: 1.4rem;
+    height: 4px;
     background: var(--selection);
+    box-shadow: 0 0 0 1px var(--text);
 }
 
 .heading-index.is-open {
@@ -1428,6 +1426,7 @@ svg {
     width: 100%;
     background: var(--selection);
     color: var(--text);
+    box-shadow: none;
 }
 /* Anchor link buttons for headings */
 .heading-anchor {
@@ -1705,7 +1704,7 @@ samp {
 .home-site-header h1 {
     margin: -0.18em 0 0.12em;
     font-family: "Crimson Text", Georgia, serif;
-    font-size: clamp(4rem, 7.5vw, 7rem);
+    font-size: clamp(3.25rem, 5.5vw, 5.5rem);
     font-weight: 600;
     line-height: 0.9;
     letter-spacing: -0.045em;
@@ -1946,7 +1945,7 @@ samp {
     }
 
     .home-site-header h1 {
-        font-size: 3.4rem;
+        font-size: 2.8rem;
     }
 
     .home-site-header p {
