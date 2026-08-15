@@ -677,7 +677,7 @@ table.posts td:first-child {
     display: block;
     grid-column: 1 / span 2;
     width: 100%;
-
+}
 .page-shell:has(.side-rail) .layout-side-rail .sidenote {
     display: none;
 }
