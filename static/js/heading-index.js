@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const indexContainer = document.getElementById('heading-index');
   if (!content || !indexContainer) return;
 
-  // Only look for headings in the article body, not listings
   const body = content.querySelector('.body') || content;
   const headings = Array.from(body.querySelectorAll('h2, h3'));
   if (document.body.classList.contains('page-home')) {
@@ -13,14 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
     indexContainer.style.display = 'none';
     return;
   }
-
-  indexContainer.tabIndex = 0;
-  indexContainer.setAttribute('role', 'button');
-  indexContainer.setAttribute('aria-label', 'Open section navigation');
-  indexContainer.setAttribute('aria-expanded', 'false');
-  // Build index
-  const inner = document.createElement('div');
-  inner.className = 'heading-index-inner';
 
   const usedIds = new Set(Array.from(document.querySelectorAll('[id]'), element => element.id));
 
@@ -44,83 +35,86 @@ document.addEventListener('DOMContentLoaded', function() {
     usedIds.add(slug);
     return slug;
   }
-  headings.forEach(h => {
-    if (!h.id) h.id = slugifyHeading(h);
 
-    // Add anchor link with SVG icon to heading
+  const trigger = document.createElement('button');
+  trigger.type = 'button';
+  trigger.className = 'heading-index-trigger';
+  trigger.setAttribute('aria-label', 'Open section navigation');
+  trigger.setAttribute('aria-expanded', 'false');
+  for (let i = 0; i < 3; i++) {
+    const tick = document.createElement('span');
+    tick.className = 'heading-index-tick';
+    trigger.appendChild(tick);
+  }
+
+  const inner = document.createElement('div');
+  inner.className = 'heading-index-inner';
+  headings.forEach(heading => {
+    if (!heading.id) heading.id = slugifyHeading(heading);
+
     const anchor = document.createElement('a');
     anchor.className = 'heading-anchor';
-    anchor.href = '#' + h.id;
+    anchor.href = '#' + heading.id;
     anchor.title = 'Link to this section';
-    h.appendChild(anchor);
+    heading.appendChild(anchor);
 
-    // Add to index
     const link = document.createElement('a');
-    link.href = '#' + h.id;
-    link.textContent = h.textContent;
-    if (h.tagName === 'H3') link.classList.add('h3');
+    link.href = '#' + heading.id;
+    link.textContent = heading.textContent;
+    if (heading.tagName === 'H3') link.classList.add('h3');
     inner.appendChild(link);
   });
 
-  indexContainer.appendChild(inner);
+  indexContainer.append(trigger, inner);
 
-  // Helper to set active link
   function setActive(hash) {
-    indexContainer.querySelectorAll('a').forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === hash);
+    inner.querySelectorAll('a').forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === hash);
     });
   }
 
   function openIndex() {
     indexContainer.classList.add('is-open');
-    indexContainer.setAttribute('aria-expanded', 'true');
+    trigger.setAttribute('aria-expanded', 'true');
   }
 
   function closeIndex() {
     indexContainer.classList.remove('is-open');
-    indexContainer.setAttribute('aria-expanded', 'false');
+    trigger.setAttribute('aria-expanded', 'false');
   }
 
-  indexContainer.addEventListener('click', function(e) {
-    if (!indexContainer.classList.contains('is-open')) {
-      e.preventDefault();
-      openIndex();
-      return;
-    }
+  trigger.addEventListener('click', function() {
+    if (indexContainer.classList.contains('is-open')) closeIndex();
+    else openIndex();
+  });
 
-    const link = e.target.closest('a');
-    if (link) {
-      setActive(link.getAttribute('href'));
+  inner.addEventListener('click', function(event) {
+    const link = event.target.closest('a');
+    if (!link) return;
+    setActive(link.getAttribute('href'));
+    closeIndex();
+  });
+
+  document.addEventListener('click', function(event) {
+    if (!indexContainer.contains(event.target)) closeIndex();
+  });
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && indexContainer.classList.contains('is-open')) {
       closeIndex();
+      trigger.focus();
     }
   });
 
-  indexContainer.addEventListener('keydown', function(e) {
-    if ((e.key === 'Enter' || e.key === ' ') && !indexContainer.classList.contains('is-open')) {
-      e.preventDefault();
-      openIndex();
-    } else if (e.key === 'Escape') {
-      closeIndex();
-      indexContainer.focus();
-    }
-  });
-
-  document.addEventListener('click', function(e) {
-    if (!indexContainer.contains(e.target)) closeIndex();
-  });
-  // Track which heading is currently most visible via scroll
   let scrollTimeout;
-  const observer = new IntersectionObserver((entries) => {
-    // Debounce to avoid fighting with click highlight
+  const observer = new IntersectionObserver(entries => {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActive('#' + entry.target.id);
-        }
+        if (entry.isIntersecting) setActive('#' + entry.target.id);
       });
     }, 100);
   }, { rootMargin: '-10% 0px -80% 0px' });
 
-  headings.forEach(h => observer.observe(h));
+  headings.forEach(heading => observer.observe(heading));
 });
