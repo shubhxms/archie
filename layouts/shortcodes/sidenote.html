@@ -1,4 +1,14 @@
-{{- $content := .Inner | .Page.RenderString -}}
-{{- $number := add (len (default (slice) (.Page.Store.Get "sidenotes"))) 1 -}}
-{{- .Page.Store.Add "sidenotes" (slice (dict "ordinal" .Ordinal "number" $number "content" $content)) -}}
-<sup class="sidenote-ref sidenote-ref-rail" id="sn-{{ .Ordinal }}-rail-ref"><a href="#sn-{{ .Ordinal }}-rail" aria-label="Sidenote {{ $number }}">{{ $number }}</a></sup><sup class="sidenote-ref sidenote-ref-footnote" id="sn-{{ .Ordinal }}-footnote-ref"><a href="#sn-{{ .Ordinal }}-footnote" aria-label="Footnote {{ $number }}">{{ $number }}</a></sup>
+{{- $content := .Inner | .Page.RenderString -}} {{- $number := add (len (default
+(slice) (.Page.Store.Get "sidenotes"))) 1 -}} {{- .Page.Store.Add "sidenotes"
+(slice (dict "ordinal" .Ordinal "number" $number "content" $content)) -}}
+<sup class="sidenote-ref sidenote-ref-rail" id="sn-{{ .Ordinal }}-rail-ref"
+  ><a href="#sn-{{ .Ordinal }}-rail" aria-label="Sidenote {{ $number }}"
+    >{{ $number }}</a
+  ></sup
+><sup
+  class="sidenote-ref sidenote-ref-footnote"
+  id="sn-{{ .Ordinal }}-footnote-ref"
+  ><a href="#sn-{{ .Ordinal }}-footnote" aria-label="Footnote {{ $number }}"
+    >{{ $number }}</a
+  ></sup
+>
